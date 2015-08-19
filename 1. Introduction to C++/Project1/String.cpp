@@ -32,9 +32,7 @@ char * String::CStr()
 
 void String::ToLower()
 {
-	int length = String::Length();
-
-	for (short i = 0; i < length; i++)
+	for (short i = 0; i < String::Length(); i++)
 	{
 		if ((string[i] >= 65) && (string[i] <= 90))
 			string[i] += 32;
@@ -43,9 +41,7 @@ void String::ToLower()
 
 void String::ToUpper()
 {
-	int length = String::Length();
-
-	for (short i = 0; i < length; i++)
+	for (short i = 0; i < String::Length(); i++)
 	{
 		if ((string[i] >= 97) && (string[i] <= 122))
 			string[i] -= 32;
@@ -79,7 +75,7 @@ int String::Find(int index, char p_string[256])
 	return -1;
 }
 
-void String::Replace(char p_string[256], char p_replace[256]) //accepts 2 arguments: The string to look for in 'String::string', The string to replace p_string in 'String::string'
+int String::Replace(char p_string[256], char p_replace[256]) //accepts 2 arguments: The string to look for in 'String::string', The string to replace p_string in 'String::string'
 {
 	char* found = strstr(string, p_string); //look for 'p_string' in 'String::string'
 	char replace[256]; //strcat_s is unable to handle char* as the first parameter for some reason, so we'll just create this to hold 'p_replace' for us in a type char [256]
@@ -87,8 +83,8 @@ void String::Replace(char p_string[256], char p_replace[256]) //accepts 2 argume
 
 	if (found != NULL) //as long as the 'p_string' was found in 'String::string'
 	{
-		char hold[256];
-		int i;
+		char hold[256]; //will hold onto the rest of 'String::string' after the 'p_string' was found
+		int i; //loop var
 
 		//'i' begins at where 'found' begins inside of 'String::string'. Runs until it reaches the end of 'String::string' after considering the length of 'p_string'. 'i' += 1
 		for (i = (String::Length() - strlen(found)); i < String::Length() - strlen(p_string); i++) 
@@ -99,7 +95,10 @@ void String::Replace(char p_string[256], char p_replace[256]) //accepts 2 argume
 
 		strcat_s(replace, hold); //add 'hold' to the end of 'replace'
 		strcpy_s(string, replace); //finish the replace by setting 'String::string' to 'replace'
+
+		return 0;
 	}
+	return -1;
 }
 
 char* String::ReadFromConsole()
