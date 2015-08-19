@@ -2,7 +2,7 @@
 
 String::String(char p_string[256]) //called when the object of 'String' class is created
 {
-	strcpy(string, p_string); //sets the internal string to a value on creation of the object
+	strcpy_s(string, p_string); //sets the internal string to a value on creation of the object
 }
 
 int String::Length()
@@ -22,7 +22,7 @@ int String::EqualTo(char p_string[256])
 
 void String::Append(char p_string[256])
 {
-	strncat(string, p_string, strlen(p_string));
+	strncat_s(string, p_string, strlen(p_string));
 }
 
 char * String::CStr()
@@ -52,18 +52,51 @@ void String::ToUpper()
 	}
 }
 
-int String::Find(char[256])
+int String::Find(char p_string[256])
 {
-	return 0;
+	char* found = strstr(string, p_string);
+
+	if (found != NULL)
+		return String::Length() - strlen(found);
+	return -1;
 }
 
-int String::Find(int, char[256])
+int String::Find(int index, char p_string[256])
 {
-	return 0;
+	char hold[256];
+	int i;
+
+	for (i = 0; i < String::Length() - index; i++)
+	{
+		hold[i] = string[i+index];
+	}
+	hold[i] = 0;
+
+	char* found = strstr(hold, p_string);
+
+	if (found != NULL)
+		return String::Length() - strlen(found);
+	return -1;
 }
 
-void String::Replace(char[256], char[256])
+void String::Replace(char p_string[256], char replace[256])
 {
+	char* found = strstr(string, p_string);
+
+	if (found != NULL)
+	{
+		char hold[256];
+		int i;
+
+		for (i = (String::Length() - strlen(found)); i < String::Length() - strlen(replace); i++)
+		{
+			hold[i] = string[i + strlen(replace)];
+		}
+		hold[i] = 0;
+
+		strcat_s(replace, sizeof(replace), hold);
+		strcpy_s(string, hold);
+	}
 }
 
 std::string String::ReadFromConsole()
