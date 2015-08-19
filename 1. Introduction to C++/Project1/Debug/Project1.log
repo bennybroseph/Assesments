@@ -1,11 +1,15 @@
-﻿Build started 8/18/2015 10:55:23 PM.
-     1>Project "C:\Users\Womb-Raider\Documents\GitHub\Assesments\1. Introduction to C++\Project1\Project1.vcxproj" on node 2 (Build target(s)).
-     1>Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Womb-Raider\Documents\GitHub\Assesments\1. Introduction to C++\Debug\Project1.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\Womb-Raider\Documents\GitHub\Assesments\1. Introduction to C++\Debug\Project1.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Womb-Raider\Documents\GitHub\Assesments\1. Introduction to C++\Debug\Project1.lib" /MACHINE:X86 Debug\Source.obj
+﻿Build started 8/19/2015 12:29:56 PM.
+     1>Project "C:\Users\benjamin.odom\Documents\GitHub\Assesments\1. Introduction to C++\Project1\Project1.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt String.cpp
+         String.cpp
+     1>c:\users\benjamin.odom\documents\github\assesments\1. introduction to c++\project1\string.cpp(93): warning C4018: '<': signed/unsigned mismatch
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\benjamin.odom\Documents\GitHub\Assesments\1. Introduction to C++\Debug\Project1.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\benjamin.odom\Documents\GitHub\Assesments\1. Introduction to C++\Debug\Project1.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\benjamin.odom\Documents\GitHub\Assesments\1. Introduction to C++\Debug\Project1.lib" /MACHINE:X86 Debug\Source.obj
          Debug\String.obj
-         Project1.vcxproj -> C:\Users\Womb-Raider\Documents\GitHub\Assesments\1. Introduction to C++\Debug\Project1.exe
-     1>Done Building Project "C:\Users\Womb-Raider\Documents\GitHub\Assesments\1. Introduction to C++\Project1\Project1.vcxproj" (Build target(s)).
+         Project1.vcxproj -> C:\Users\benjamin.odom\Documents\GitHub\Assesments\1. Introduction to C++\Debug\Project1.exe
+     1>Done Building Project "C:\Users\benjamin.odom\Documents\GitHub\Assesments\1. Introduction to C++\Project1\Project1.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.18
+Time Elapsed 00:00:00.60

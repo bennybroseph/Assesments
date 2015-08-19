@@ -79,33 +79,39 @@ int String::Find(int index, char p_string[256])
 	return -1;
 }
 
-void String::Replace(char p_string[256], char replace[256])
+void String::Replace(char p_string[256], char p_replace[256]) //accepts 2 arguments: The string to look for in 'String::string', The string to replace p_string in 'String::string'
 {
-	char* found = strstr(string, p_string);
+	char* found = strstr(string, p_string); //look for 'p_string' in 'String::string'
+	char replace[256]; //strcat_s is unable to handle char* as the first parameter for some reason, so we'll just create this to hold 'p_replace' for us in a type char [256]
+	strcpy_s(replace, p_replace); //now 'replace' is exactly the same as 'p_replace'
 
-	if (found != NULL)
+	if (found != NULL) //as long as the 'p_string' was found in 'String::string'
 	{
 		char hold[256];
 		int i;
 
-		for (i = (String::Length() - strlen(found)); i < String::Length() - strlen(replace); i++)
+		//'i' begins at where 'found' begins inside of 'String::string'. Runs until it reaches the end of 'String::string' after considering the length of 'p_string'. 'i' += 1
+		for (i = (String::Length() - strlen(found)); i < String::Length() - strlen(p_string); i++) 
 		{
-			hold[i] = string[i + strlen(replace)];
+			hold[i] = string[i + strlen(p_string)]; //begin after 'p_string' and put the rest of 'String::string' into hold
 		}
-		hold[i] = 0;
+		hold[i] = 0; //add a terminating character to the end of 'hold'
 
-		strcat_s(replace, sizeof(replace), hold);
-		strcpy_s(string, hold);
+		strcat_s(replace, hold); //add 'hold' to the end of 'replace'
+		strcpy_s(string, replace); //finish the replace by setting 'String::string' to 'replace'
 	}
 }
 
-std::string String::ReadFromConsole()
+char* String::ReadFromConsole()
 {
-	return std::string();
+	std::cin >> input;
+
+	return input;
 }
 
 void String::WriteToConsole()
 {
+	std::cout << string;
 }
 
 String::~String()

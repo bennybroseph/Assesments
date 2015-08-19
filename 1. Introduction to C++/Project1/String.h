@@ -7,7 +7,7 @@
 class String
 {
 private:
-	char string[256];
+	char string[256], input[256];
 
 public:
 	int Length();
@@ -20,7 +20,7 @@ public:
 	int Find(char[256]);
 	int Find(int, char[256]);
 	void Replace(char[256], char[256]);
-	std::string ReadFromConsole();
+	char* ReadFromConsole();
 	void WriteToConsole();
 
 	String(char[256]);
