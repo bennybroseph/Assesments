@@ -1,0 +1,13 @@
+﻿Build started 8/26/2015 1:19:14 PM.
+     1>Project "C:\Users\benjamin.odom\Documents\GitHub\Assesments\Pong\Pong\Pong.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /IC:\SDL\include /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Handle.cpp
+         Handle.cpp
+     1>c:\users\benjamin.odom\documents\github\assesments\pong\pong\handle.cpp(17): error C2079: 'MainLoop' uses undefined class 'Handle::MainLoop_Class'
+     1>c:\users\benjamin.odom\documents\github\assesments\pong\pong\handle.cpp(19): error C2228: left of '.Run' must have class/struct/union
+         c:\users\benjamin.odom\documents\github\assesments\pong\pong\handle.cpp(19): note: type is 'int'
+     1>Done Building Project "C:\Users\benjamin.odom\Documents\GitHub\Assesments\Pong\Pong\Pong.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:00.34
