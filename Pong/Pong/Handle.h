@@ -2,10 +2,13 @@
 #define HANDLE_H_INCLUDED
 
 #include "Graphics.h"
+#include "MainLoop.h"
+#include "Time.h"
 
 #include "SDL.h"
 
 #include <iostream>
+#include <time.h>
 
 namespace Handle
 {

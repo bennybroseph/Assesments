@@ -4,10 +4,19 @@
 #include "Graphics.h"
 #include "Handle.h"
 #include "Loop.h"
+#include "Ball.h"
+#include "Paddle.h"
+
+#include <vector>
 
 namespace Handle {
 	class MainLoop_Class : public Loop
 	{
+	private:
+
+		std::vector<Ball_Class> Ball;
+		std::vector<Paddle_Class> Paddle;
+
 	public:
 
 		MainLoop_Class();
@@ -24,10 +33,6 @@ namespace Handle {
 		void Update();
 		void Draw();
 		void ReLoad_Textures();
-
-	private:
-
-		int cursor_x, cursor_y;
 	};
 }
 

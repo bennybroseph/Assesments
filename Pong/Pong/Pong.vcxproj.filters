@@ -16,6 +16,18 @@
     <Filter Include="Source Files\Loop Handle">
       <UniqueIdentifier>{d4cf57a4-d608-4f79-9f55-85b7d7e87d54}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Loop Handle\Loop">
+      <UniqueIdentifier>{b446d479-1931-4586-9126-0383886d081a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics">
+      <UniqueIdentifier>{55592c57-8d07-4df3-b15b-6e0df36444e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Event Handler">
+      <UniqueIdentifier>{c16720a3-4b10-4885-aa6e-d27341b1aec9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Loop Handle\Main Loop">
+      <UniqueIdentifier>{f9034dde-195d-45b0-b3a2-1c13643e0ab7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -24,16 +36,31 @@
     <ClCompile Include="Handle.cpp">
       <Filter>Source Files\Loop Handle</Filter>
     </ClCompile>
-    <ClCompile Include="Graphics.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Loop.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="EventHandler.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Loop Handle\Loop</Filter>
     </ClCompile>
     <ClCompile Include="MainLoop.cpp">
+      <Filter>Source Files\Loop Handle\Main Loop</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics.cpp">
+      <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="EventHandler.cpp">
+      <Filter>Source Files\Event Handler</Filter>
+    </ClCompile>
+    <ClCompile Include="Ball.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Time.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Paddle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Score.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Text.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -41,19 +68,31 @@
     <ClInclude Include="Handle.h">
       <Filter>Source Files\Loop Handle</Filter>
     </ClInclude>
-    <ClInclude Include="resource.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Graphics.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Loop.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="EventHandler.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files\Loop Handle\Loop</Filter>
     </ClInclude>
     <ClInclude Include="MainLoop.h">
+      <Filter>Source Files\Loop Handle\Main Loop</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics.h">
+      <Filter>Source Files\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="EventHandler.h">
+      <Filter>Source Files\Event Handler</Filter>
+    </ClInclude>
+    <ClInclude Include="Ball.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Time.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Paddle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Score.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Text.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

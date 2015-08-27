@@ -19,6 +19,7 @@ namespace Handle {
 				//Calls the redefined event function for the class
 				OnEvent(&event);
 			}
+			Time::Set();
 			Update();
 
 			//Calls the redefined Draw function for the class

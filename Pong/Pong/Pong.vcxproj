@@ -123,20 +123,29 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Ball.cpp" />
     <ClCompile Include="EventHandler.cpp" />
     <ClCompile Include="Graphics.cpp" />
     <ClCompile Include="Handle.cpp" />
     <ClCompile Include="Loop.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainLoop.cpp" />
+    <ClCompile Include="Paddle.cpp" />
+    <ClCompile Include="Score.cpp" />
+    <ClCompile Include="Text.cpp" />
+    <ClCompile Include="Time.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Ball.h" />
     <ClInclude Include="EventHandler.h" />
     <ClInclude Include="Graphics.h" />
     <ClInclude Include="Handle.h" />
     <ClInclude Include="Loop.h" />
     <ClInclude Include="MainLoop.h" />
-    <ClInclude Include="resource.h" />
+    <ClInclude Include="Paddle.h" />
+    <ClInclude Include="Score.h" />
+    <ClInclude Include="Text.h" />
+    <ClInclude Include="Time.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
