@@ -35,14 +35,6 @@ void Ball_Class::Collision()
 	//Collision with the screen
 	if ((this->box.l <= 0) || (this->box.r >= 1920))
 	{
-		/*this->x_vel *= -1;
-
-		if (this->box.l <= 0)
-			this->x = 0 + (this->image->w / 2);
-
-		if (this->box.r >= 1920)
-			this->x = 1920 - (this->image->w / 2);*/
-
 		if (this->box.l <= 0)
 			Score::e_score++;
 		if (this->box.r >= 1920)

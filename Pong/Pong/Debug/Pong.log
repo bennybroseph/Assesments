@@ -1,12 +1,19 @@
-﻿Build started 8/27/2015 3:05:07 PM.
-     1>Project "C:\Users\Womb-Raider\Documents\GitHub\Assesments\Pong\Pong\Pong.vcxproj" on node 2 (Build target(s)).
+﻿Build started 8/31/2015 9:39:51 AM.
+     1>Project "C:\Users\benjamin.odom\Documents\GitHub\Assesments\Pong\Pong\Pong.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /IC:\SDL\include /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Graphics.cpp Score.cpp
-         Score.cpp
-         Graphics.cpp
-         Generating Code...
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /IC:\SDL\include /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Paddle.cpp
+         Paddle.cpp
+     1>c:\users\benjamin.odom\documents\github\assesments\pong\pong\paddle.cpp(9): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+     1>c:\users\benjamin.odom\documents\github\assesments\pong\pong\paddle.cpp(11): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+     1>c:\users\benjamin.odom\documents\github\assesments\pong\pong\paddle.cpp(13): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+     1>c:\users\benjamin.odom\documents\github\assesments\pong\pong\paddle.cpp(15): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+     1>c:\users\benjamin.odom\documents\github\assesments\pong\pong\paddle.cpp(47): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+     1>c:\users\benjamin.odom\documents\github\assesments\pong\pong\paddle.cpp(52): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+     1>c:\users\benjamin.odom\documents\github\assesments\pong\pong\paddle.cpp(101): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+     1>c:\users\benjamin.odom\documents\github\assesments\pong\pong\paddle.cpp(102): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Womb-Raider\Documents\GitHub\Assesments\Pong\Debug\Pong.exe" /INCREMENTAL /NOLOGO /LIBPATH:C:\SDL\lib SDL2.lib SDL2main.lib SDL2_image.lib SDL2_mixer.lib SDL2_ttf.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\Womb-Raider\Documents\GitHub\Assesments\Pong\Debug\Pong.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Womb-Raider\Documents\GitHub\Assesments\Pong\Debug\Pong.lib" /MACHINE:X86 Debug\Ball.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\benjamin.odom\Documents\GitHub\Assesments\Pong\Debug\Pong.exe" /INCREMENTAL /NOLOGO /LIBPATH:C:\SDL\lib SDL2.lib SDL2main.lib SDL2_image.lib SDL2_mixer.lib SDL2_ttf.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\benjamin.odom\Documents\GitHub\Assesments\Pong\Debug\Pong.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\benjamin.odom\Documents\GitHub\Assesments\Pong\Debug\Pong.lib" /MACHINE:X86 Debug\AI.obj
+         Debug\Ball.obj
          Debug\EventHandler.obj
          Debug\Graphics.obj
          Debug\Handle.obj
@@ -17,9 +24,9 @@
          Debug\Score.obj
          Debug\Text.obj
          Debug\Time.obj
-         Pong.vcxproj -> C:\Users\Womb-Raider\Documents\GitHub\Assesments\Pong\Debug\Pong.exe
-     1>Done Building Project "C:\Users\Womb-Raider\Documents\GitHub\Assesments\Pong\Pong\Pong.vcxproj" (Build target(s)).
+         Pong.vcxproj -> C:\Users\benjamin.odom\Documents\GitHub\Assesments\Pong\Debug\Pong.exe
+     1>Done Building Project "C:\Users\benjamin.odom\Documents\GitHub\Assesments\Pong\Pong\Pong.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:01.13
+Time Elapsed 00:00:00.67

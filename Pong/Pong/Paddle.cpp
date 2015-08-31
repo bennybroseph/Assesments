@@ -31,6 +31,9 @@ void Paddle_Class::Handle()
 
 void Paddle_Class::Move()
 {
+	this->x += this->x_vel*((float)Time::GetIgnore() / 1000);
+	this->y += this->y_vel*((float)Time::GetIgnore() / 1000);
+
 	if ((this->up_flag) && (this->y > 0 + (this->image->h / 2)))
 		this->y_vel = -500;
 	else if ((this->down_flag) && (this->y < 1080 - (this->image->h / 2)))
@@ -38,8 +41,16 @@ void Paddle_Class::Move()
 	else
 		this->y_vel = 0;
 
-	this->x += this->x_vel*((float)Time::GetIgnore() / 1000);
-	this->y += this->y_vel*((float)Time::GetIgnore() / 1000);
+	if (this->box.t < 0)
+	{
+		this->y_vel = 0;
+		this->y = 0 + this->image->h / 2;
+	}
+	if (this->box.b > 1080)
+	{
+		this->y_vel = 0;
+		this->y = 1080 - this->image->h / 2;
+	}
 }
 
 void Paddle_Class::SetBox()

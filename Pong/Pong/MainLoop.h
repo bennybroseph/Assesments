@@ -4,6 +4,7 @@
 #include "Graphics.h"
 #include "Handle.h"
 #include "Loop.h"
+#include "AI.h"
 #include "Ball.h"
 #include "Paddle.h"
 

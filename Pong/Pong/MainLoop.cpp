@@ -17,6 +17,9 @@ namespace Handle {
 	void MainLoop_Class::Update()
 	{
 		int i;
+
+		AI::Handle(Paddle[0], Ball[0]);
+
 		for (i = 0; i < Paddle.size(); i++)
 			Paddle[i].Handle();
 		for (i = 0; i < Ball.size(); i++)
@@ -46,14 +49,14 @@ namespace Handle {
 		case SDLK_SPACE: Score::OnKeyDown(sym, mod, scancode);
 			break;
 
-		case SDLK_UP: Paddle[0].OnKeyDown(sym, mod, scancode);
+		case SDLK_UP: Paddle[1].OnKeyDown(sym, mod, scancode);
 			break;
-		case SDLK_DOWN: Paddle[0].OnKeyDown(sym, mod, scancode);
+		case SDLK_DOWN: Paddle[1].OnKeyDown(sym, mod, scancode);
 			break;
 
-		case SDLK_w: Paddle[1].OnKeyDown(sym, mod, scancode);
+		case SDLK_w: Paddle[0].OnKeyDown(sym, mod, scancode);
 			break;
-		case SDLK_s: Paddle[1].OnKeyDown(sym, mod, scancode);
+		case SDLK_s: Paddle[0].OnKeyDown(sym, mod, scancode);
 			break;
 
 		case SDLK_F1:
@@ -80,14 +83,14 @@ namespace Handle {
 	{
 		switch (sym)
 		{
-		case SDLK_UP: Paddle[0].OnKeyUp(sym, mod, scancode);
+		case SDLK_UP: Paddle[1].OnKeyUp(sym, mod, scancode);
 			break;
-		case SDLK_DOWN: Paddle[0].OnKeyUp(sym, mod, scancode);
+		case SDLK_DOWN: Paddle[1].OnKeyUp(sym, mod, scancode);
 			break;
 
-		case SDLK_w: Paddle[1].OnKeyUp(sym, mod, scancode);
+		case SDLK_w: Paddle[0].OnKeyUp(sym, mod, scancode);
 			break;
-		case SDLK_s: Paddle[1].OnKeyUp(sym, mod, scancode);
+		case SDLK_s: Paddle[0].OnKeyUp(sym, mod, scancode);
 			break;
 
 		default: 

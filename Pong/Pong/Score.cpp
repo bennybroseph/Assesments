@@ -30,12 +30,12 @@ namespace Score
 
 		if (p_score > 8)
 		{
-			Text::Print(Text::Neon, 980, 540, true, "You  Win");
+			Text::Print(Text::Neon, 980, 540, true, "You  Lose");
 			Text::Print(Text::Neon_Small, 980, 700, true, "Press  Space  to  Restart");
 		}
 		if (e_score > 8)
 		{
-			Text::Print(Text::Neon, 980, 540, true, "You Lose");
+			Text::Print(Text::Neon, 980, 540, true, "You Win");
 			Text::Print(Text::Neon_Small, 980, 700, true, "Press  Space  to  Restart");
 		}
 	}
