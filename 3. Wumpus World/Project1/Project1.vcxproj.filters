@@ -16,8 +16,26 @@
     <Filter Include="Source Files\Dungeon">
       <UniqueIdentifier>{b82cecfb-d53a-48e8-88cb-501ddc78b55d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Robot">
+    <Filter Include="Source Files\EventHandle">
+      <UniqueIdentifier>{55feccc7-a67e-4f56-91e1-29f3dd4778e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\LoopHandle">
+      <UniqueIdentifier>{cb5a787d-55d8-41f8-8943-8b4536983bbd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Dungeon\Grid">
+      <UniqueIdentifier>{595d9ac2-62ec-427d-9e28-c0fe058874eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Dungeon\Robot">
       <UniqueIdentifier>{cb434be9-9092-4ace-9c14-2b25afe97c01}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\System">
+      <UniqueIdentifier>{8d51d2ef-d3b7-430c-8187-b84e24c6bc6b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\MainLoop">
+      <UniqueIdentifier>{06ba0ffb-dcc7-4cd1-a65f-1b88cb9ac0c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Loop">
+      <UniqueIdentifier>{0edd5794-2dba-4998-bc09-edff157e6df2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -25,28 +43,28 @@
       <Filter>Source Files\Dungeon</Filter>
     </ClCompile>
     <ClCompile Include="Robot.cpp">
-      <Filter>Source Files\Robot</Filter>
-    </ClCompile>
-    <ClCompile Include="Grid.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="System.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Dungeon\Robot</Filter>
     </ClCompile>
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="LoopHandle.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="EventHandle.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\EventHandle</Filter>
+    </ClCompile>
+    <ClCompile Include="LoopHandle.cpp">
+      <Filter>Source Files\LoopHandle</Filter>
+    </ClCompile>
+    <ClCompile Include="Grid.cpp">
+      <Filter>Source Files\Dungeon\Grid</Filter>
+    </ClCompile>
+    <ClCompile Include="System.cpp">
+      <Filter>Source Files\System</Filter>
     </ClCompile>
     <ClCompile Include="MainLoop.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\MainLoop</Filter>
     </ClCompile>
     <ClCompile Include="Loop.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Loop</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -54,25 +72,25 @@
       <Filter>Source Files\Dungeon</Filter>
     </ClInclude>
     <ClInclude Include="Robot.h">
-      <Filter>Source Files\Robot</Filter>
-    </ClInclude>
-    <ClInclude Include="Grid.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="System.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="LoopHandle.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files\Dungeon\Robot</Filter>
     </ClInclude>
     <ClInclude Include="EventHandle.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files\EventHandle</Filter>
+    </ClInclude>
+    <ClInclude Include="LoopHandle.h">
+      <Filter>Source Files\LoopHandle</Filter>
+    </ClInclude>
+    <ClInclude Include="Grid.h">
+      <Filter>Source Files\Dungeon\Grid</Filter>
+    </ClInclude>
+    <ClInclude Include="System.h">
+      <Filter>Source Files\System</Filter>
     </ClInclude>
     <ClInclude Include="MainLoop.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files\MainLoop</Filter>
     </ClInclude>
     <ClInclude Include="Loop.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files\Loop</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

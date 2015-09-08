@@ -2,7 +2,7 @@
 
 void main()
 {
-	LoopHandle::Init();
+	LoopHandle::Init(); 
 
 	LoopHandle::Quit();
 }

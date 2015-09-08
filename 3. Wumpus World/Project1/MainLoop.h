@@ -14,6 +14,7 @@
 
 #include "Loop.h"
 #include "Dungeon.h"
+#include "Robot.h"
 
 #include <vector>
 
@@ -22,9 +23,7 @@ namespace LoopHandle
 	class MainLoop : public Loop
 	{
 	public:
-
 		void Handle();
-		void Draw();
 
 		void OnKeyPress(int a_iKey);
 		void OnKeyRepeat(int a_iKey);
@@ -32,6 +31,8 @@ namespace LoopHandle
 
 		MainLoop();
 		~MainLoop();
+	private:
+		int m_iControls;
 	};
 }
 #endif // _MAINLOOP_H_

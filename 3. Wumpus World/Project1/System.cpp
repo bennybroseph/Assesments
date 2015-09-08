@@ -19,7 +19,40 @@ namespace System
 	void Print(std::string ac_sTextToPrint, const int ac_iLength, const int ac_iPosX, const int ac_iPosY)
 	{
 		SetCursor(ac_iPosX, ac_iPosY, hCursorInfo.bVisible);
-		std::cout << ac_sTextToPrint;
+
+		if (ac_sTextToPrint.length() > ac_iLength)
+		{
+			int i = 0; // Will keep track of where in the 'substr' we've gone thus far
+			std::vector<std::string> vsTextToPrint;
+
+			bool bLoop = true;
+			while (bLoop)
+			{
+				if (i + ac_iLength >= ac_sTextToPrint.length())
+					bLoop = false;
+
+				std::string sTemp = ac_sTextToPrint.substr(i, ac_iLength); // Holds the 'substr' of 'ac_sTextToPrint' that we're cutting into pieces.
+
+				vsTextToPrint.push_back(ac_sTextToPrint.substr(i, i + sTemp.rfind(" "))); i += sTemp.rfind(" ") + 1;
+			}
+
+			for (i = 0; i < vsTextToPrint.size(); ++i)
+			{
+				SetCursor(ac_iPosX, ac_iPosY + i, hCursorInfo.bVisible);
+				std::cout << vsTextToPrint[i];
+			}
+		}
+		else
+			std::cout << ac_sTextToPrint;
+	}
+
+	void ToLower(char * a_pcUppercaseWord, const int ac_iSize)
+	{
+		for (int i = 0; i < ac_iSize; ++i)
+		{
+			if (a_pcUppercaseWord[i] <= 90 && a_pcUppercaseWord[i] >= 65)
+				a_pcUppercaseWord[i] += 32;
+		}
 	}
 
 	void SetCursor(short a_iPosX, short a_iPosY, bool a_bShowCursor)
@@ -29,13 +62,25 @@ namespace System
 		SetConsoleCursorPosition(hStdout, { a_iPosX, a_iPosY });
 		SetConsoleCursorInfo(hStdout, &hCursorInfo);
 	}
+	void ShowCursor()
+	{
+		hCursorInfo.bVisible = true;
+
+		SetConsoleCursorInfo(hStdout, &hCursorInfo);
+	}
+	void HideCursor()
+	{
+		hCursorInfo.bVisible = false;
+
+		SetConsoleCursorInfo(hStdout, &hCursorInfo);
+	}
 
 	void Pause()
 	{
 		SetCursor(0, LAST_LINE_OF_CONSOLE, 0);
-
 		printf_s("<Press Enter To Continue>");
 
+		Sleep(300);
 		while (!(GetAsyncKeyState(VK_RETURN) & 0x8000)) {}
 	}
 

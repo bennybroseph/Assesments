@@ -1,24 +1,31 @@
 #include "Dungeon.h"
 
-const unsigned int MAX_ROWS = 6;
-const unsigned int MAX_COLLOMNS = 4;
+
 
 namespace Dungeon
 {
 	Grid oGrid;
 	Robot oRobot;
 
-	void Handle()
+	bool Handle()
 	{
-		oRobot.Handle();
-		oGrid.Draw();
-		System::Pause();
+		if (oRobot.IsAlive())
+			oRobot.Handle();
+
+		return oRobot.IsAlive();
+	}
+
+	bool OnKeyPress(int a_iKey)
+	{
+		if (oRobot.IsAlive())
+			oRobot.OnKeyPress(a_iKey);
+
+		return oRobot.IsAlive();
 	}
 
 	void Init()
 	{
-		oGrid.Fill(MAX_ROWS, MAX_COLLOMNS);
-		oRobot = Robot(0, 0, DIRECTION::UP);
+		oRobot = Robot(1, 1, DIRECTION::DOWN);
 	}
 	void Quit()
 	{

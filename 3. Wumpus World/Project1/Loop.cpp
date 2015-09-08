@@ -9,8 +9,7 @@ namespace LoopHandle
 		{
 			PollInput(); // From EventHandle
 
-			Handle(); // Calls virtual function
-			Draw(); // Calls Virtual Function
+			Handle();
 		}
 	}
 

@@ -22,22 +22,25 @@ namespace Dungeon
 {
 	struct Grid
 	{
-		std::vector<std::vector<char>> m_vcGrid;
+		std::vector<std::vector<char>> m_vcGrid; // Heard you like grids...Just hold the actual grid values. See 'enum TILE' for possible tile values
 
-		void Draw();
-		void Fill(int a_iRow, int a_iCollumn);
+		void Draw(); // Draw the grid on the top left of the screen
+		void Fill(int a_iRow, int a_iCollumn); // Fills the grid with empty tiles and surrounding walls
+		void Trap(int a_iRow, int a_iCollumn); // This will add traps to the cave
 	};
 
-	enum TILE
+	enum TILE // Holds all the possible tile combinations so they can be 'switch()'ed to easily
 	{
-		EMPTY,
 		WALL,
+		EMPTY,
 		WUMPUS,
 		WUMPUS_Q,
 		PIT,
 		PIT_Q,
 		GOLD,
-		GOLD_Q
+		GOLD_Q,
+
+		T_COUNT // How many possible tiles
 	};
 }
 

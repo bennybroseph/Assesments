@@ -47,12 +47,16 @@ namespace System
 	void Print(const int ac_iPosX, const int ac_iPosY, const char *ac_pcFormat, ...);
 	void Print(const std::string ac_sTextToPrint, const int ac_ciLength, const int ac_iPosX = -1, const int ac_iPosY = -1);
 	
+	void ToLower(char * a_pcUppercaseWord, const int ac_iSize);
+
 	void SetCursor(short a_iPosX, short a_iPosY, bool a_bShowCursor);
+	void ShowCursor();
+	void HideCursor();
 
 	void Pause();
 
 	// Uses the math function 'floor' after adding 0.5f to ensure numbers are rounded upwards
-	int Round(float);
+	int Round(float a_fNum);
 
 	// Will return a random number as either a float or an int based on which type is passed
 	// Expects a starting number and an ending number such as 1, 10 which gets a number between 1 and 10

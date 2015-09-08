@@ -16,7 +16,9 @@
 
 namespace Dungeon
 {
-	void Handle();
+	bool Handle();
+
+	bool OnKeyPress(int a_iKey);
 
 	void Init();
 	void Quit();
