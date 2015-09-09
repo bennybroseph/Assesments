@@ -1,5 +1,6 @@
 #include "System.h"
 
+const unsigned int LAST_SPACE_OF_CONSOLE = 80;
 const unsigned int LAST_LINE_OF_CONSOLE = 24;
 
 namespace System
@@ -46,6 +47,20 @@ namespace System
 			std::cout << ac_sTextToPrint;
 	}
 
+	void Clear(const int ac_iPosX, const int ac_iPosY, const int ac_iLineLength)
+	{
+		std::string sFill = "";
+
+		for (int i = 0; i < LAST_SPACE_OF_CONSOLE - ac_iPosX; ++i)
+			sFill += " ";
+
+		for (int i = 0; i < LAST_LINE_OF_CONSOLE - ac_iPosY; ++i)
+		{
+			SetCursor(ac_iPosX, ac_iPosY + i, 0);
+			std::cout << sFill;
+		}
+	}
+
 	void ToLower(char * a_pcUppercaseWord, const int ac_iSize)
 	{
 		for (int i = 0; i < ac_iSize; ++i)
@@ -89,9 +104,9 @@ namespace System
 		return floor(a_fNum + 0.5f);
 	}
 
-	int Random(int a_fMin, int a_fMax)
+	int Random(int a_iMin, int a_iMax)
 	{
-		return a_fMin + rand() % ((a_fMax + 1) - a_fMin);
+		return a_iMin + rand() % ((a_iMax + 1) - a_iMin);
 	}
 	float Random(float a_fMin, float a_fMax)
 	{

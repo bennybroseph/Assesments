@@ -7,6 +7,9 @@ const unsigned int MAX_COLLUMNS = 4; // The size of the grid collumns
 const unsigned int PRINT_WIDTH = 50;
 const unsigned int PRINT_POSX = 30;
 
+const unsigned int LAST_SPACE_OF_CONSOLE = 80;
+const unsigned int LAST_LINE_OF_CONSOLE = 24;
+
 namespace Dungeon
 {
 	void Robot::Handle()
@@ -16,9 +19,9 @@ namespace Dungeon
 		System::ShowCursor(); // Shows the console cursor
 		System::Print("Capitalization does *not* matter", PRINT_WIDTH, PRINT_POSX, m_iPrintLine); m_iPrintLine += 2;
 		System::Print("Face:  N / North | S / South | E / East | W / West", PRINT_WIDTH, PRINT_POSX, m_iPrintLine++);
-		System::Print("Move:  U / Up    | M / Move  | Forward  | Walk", PRINT_WIDTH, PRINT_POSX, m_iPrintLine++);
-		System::Print("Mark:  Wumpus    | Pit       | Gold     | Clear", PRINT_WIDTH, PRINT_POSX, m_iPrintLine++);
-		System::Print("Arrow: F / Fire  | A / Arrow | Shoot    | Kill", PRINT_WIDTH, PRINT_POSX, m_iPrintLine++);
+		System::Print("Move:   U / Up   | M / Move  |  Forward |  Walk", PRINT_WIDTH, PRINT_POSX, m_iPrintLine++);
+		System::Print("Mark:   Wumpus   |    Pit    |   Gold   |  Clear", PRINT_WIDTH, PRINT_POSX, m_iPrintLine++);
+		System::Print("Arrow: F / Fire  | A / Arrow |   Shoot  |  Kill", PRINT_WIDTH, PRINT_POSX, m_iPrintLine++);
 		System::Print("--------------------------------------------------", PRINT_WIDTH, PRINT_POSX, m_iPrintLine); m_iPrintLine += 2;
 
 		System::Print("Position:", PRINT_WIDTH, PRINT_POSX, m_iPrintLine);
@@ -308,6 +311,15 @@ namespace Dungeon
 		bool bMoved = false; // Will determine if the player moves this step or not
 		char cTemp = NULL; // Will hold the tile value the user wants to mark as questionable 
 
+		Clear();
+
+		System::Print("Turn        : <- or ->", PRINT_WIDTH, PRINT_POSX, m_iPrintLine++);
+		System::Print("Move Forward: Up Arrow", PRINT_WIDTH, PRINT_POSX, m_iPrintLine++);
+		System::Print("Mark Tile   : W - Wumpus | P - Pit | G - Gold", PRINT_WIDTH, PRINT_POSX, m_iPrintLine++);
+		System::Print("Clear Mark  : X - Clear", PRINT_WIDTH, PRINT_POSX, m_iPrintLine++);
+		System::Print("Shoot Arrow : F - Fire", PRINT_WIDTH, PRINT_POSX, m_iPrintLine); m_iPrintLine += 2;
+		System::Print("Shoot Arrow : F - Fire", PRINT_WIDTH, PRINT_POSX, m_iPrintLine); m_iPrintLine += 2;
+
 		switch (a_iKey)
 		{
 		case VK_LEFT: ++m_iFacing; break;
@@ -361,12 +373,9 @@ namespace Dungeon
 
 	void Robot::Clear()
 	{
-		system("cls");
+		System::Clear(PRINT_POSX, 0, LAST_LINE_OF_CONSOLE);
 
 		m_iPrintLine = 0; // Reset where the which line the console prints to
-
-		m_oPercievedGrid.Draw();
-		Draw();
 	}
 
 	Robot::Robot()

@@ -2,11 +2,15 @@
 // File: LoopHandle.h
 // Author: Ben Odom
 // Date Created: 09/04/2015
-// Brief: This file contains the 'LoopHandle' namespace and
-//        it's small class 'Loop' which is basically a blue
-//        print for the 'Main Loop' class which will
-//        hold the code for Wumpus World's loop sequence
+// Brief: This file contains the namespace 'LoopHandle' 
+//        which will act as a handle for the games main loop
+//        but not be part of it. It could technically handle
+//        multiple game loops within it or completely 
+//        separate games entirely
 ////////////////////////////////////////////////////////////
+
+#ifndef _LOOPHANDLE_H_
+#define _LOOPHANDLE_H_
 
 #include "MainLoop.h"
 #include "EventHandle.h"
@@ -18,3 +22,4 @@ namespace LoopHandle
 	void Quit();
 }
 
+#endif // _LOOPHANDLE_H_

@@ -46,7 +46,7 @@ namespace LoopHandle
 	{
 		m_bIsRunning = true;
 
-		System::Print("Do you want to use text or the arrow keys to control your character?", PRINT_WIDTH, PRINT_POSX, 0);
+		System::Print("Do you want to use text input or the arrow keys to control your character?", PRINT_WIDTH, PRINT_POSX, 0);
 
 		System::Print(">> ", PRINT_WIDTH, PRINT_POSX, 3);
 
@@ -55,10 +55,10 @@ namespace LoopHandle
 		std::cin.getline(cBuffer, 256);
 		System::ToLower(cBuffer, 256);
 
-		if (!strcmp(cBuffer, "text"))
-			m_iControls = 0;
+		if (!strcmp(cBuffer, "text") || !strcmp(cBuffer, "text input")) // Remeber that strcmp returns 0 if it finds the requested char*
+			m_iControls = 0; // Text input
 		else
-			m_iControls = 1;
+			m_iControls = 1; // Regular input
 
 		Dungeon::Init();
 	}

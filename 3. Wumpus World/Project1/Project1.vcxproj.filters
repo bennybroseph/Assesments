@@ -31,10 +31,10 @@
     <Filter Include="Source Files\System">
       <UniqueIdentifier>{8d51d2ef-d3b7-430c-8187-b84e24c6bc6b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\MainLoop">
+    <Filter Include="Source Files\LoopHandle\MainLoop">
       <UniqueIdentifier>{06ba0ffb-dcc7-4cd1-a65f-1b88cb9ac0c6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Loop">
+    <Filter Include="Source Files\LoopHandle\Loop">
       <UniqueIdentifier>{0edd5794-2dba-4998-bc09-edff157e6df2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -61,10 +61,10 @@
       <Filter>Source Files\System</Filter>
     </ClCompile>
     <ClCompile Include="MainLoop.cpp">
-      <Filter>Source Files\MainLoop</Filter>
+      <Filter>Source Files\LoopHandle\MainLoop</Filter>
     </ClCompile>
     <ClCompile Include="Loop.cpp">
-      <Filter>Source Files\Loop</Filter>
+      <Filter>Source Files\LoopHandle\Loop</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -87,10 +87,10 @@
       <Filter>Source Files\System</Filter>
     </ClInclude>
     <ClInclude Include="MainLoop.h">
-      <Filter>Source Files\MainLoop</Filter>
+      <Filter>Source Files\LoopHandle\MainLoop</Filter>
     </ClInclude>
     <ClInclude Include="Loop.h">
-      <Filter>Source Files\Loop</Filter>
+      <Filter>Source Files\LoopHandle\Loop</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

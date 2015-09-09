@@ -4,7 +4,6 @@
 
 namespace Dungeon
 {
-	Grid oGrid;
 	Robot oRobot;
 
 	bool Handle() // This is called by the 'MainLoop' when text input is selected

@@ -1,38 +1,8 @@
-﻿Build started 9/9/2015 10:18:41 AM.
+﻿Build started 9/9/2015 12:55:15 PM.
      1>Project "C:\Users\benjamin.odom\Documents\GitHub\Assesments\3. Wumpus World\Project1\Project1.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Dungeon.cpp EventHandle.cpp Grid.cpp Loop.cpp LoopHandle.cpp Main.cpp MainLoop.cpp Robot.cpp System.cpp
-         System.cpp
-     1>c:\users\benjamin.odom\documents\github\assesments\3. wumpus world\project1\system.cpp(16): warning C4800: 'BOOL': forcing value to bool 'true' or 'false' (performance warning)
-     1>c:\users\benjamin.odom\documents\github\assesments\3. wumpus world\project1\system.cpp(21): warning C4800: 'BOOL': forcing value to bool 'true' or 'false' (performance warning)
-     1>c:\users\benjamin.odom\documents\github\assesments\3. wumpus world\project1\system.cpp(23): warning C4018: '>': signed/unsigned mismatch
-     1>c:\users\benjamin.odom\documents\github\assesments\3. wumpus world\project1\system.cpp(31): warning C4018: '>=': signed/unsigned mismatch
-     1>c:\users\benjamin.odom\documents\github\assesments\3. wumpus world\project1\system.cpp(39): warning C4018: '<': signed/unsigned mismatch
-     1>c:\users\benjamin.odom\documents\github\assesments\3. wumpus world\project1\system.cpp(41): warning C4800: 'BOOL': forcing value to bool 'true' or 'false' (performance warning)
-     1>c:\users\benjamin.odom\documents\github\assesments\3. wumpus world\project1\system.cpp(89): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-     1>c:\users\benjamin.odom\documents\github\assesments\3. wumpus world\project1\system.cpp(103): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Robot.cpp
          Robot.cpp
-         MainLoop.cpp
-         LoopHandle.cpp
-         EventHandle.cpp
-     1>c:\users\benjamin.odom\documents\github\assesments\3. wumpus world\project1\eventhandle.cpp(12): warning C4018: '<': signed/unsigned mismatch
-     1>c:\users\benjamin.odom\documents\github\assesments\3. wumpus world\project1\eventhandle.cpp(15): warning C4018: '<': signed/unsigned mismatch
-     1>c:\users\benjamin.odom\documents\github\assesments\3. wumpus world\project1\eventhandle.cpp(17): warning C4018: '>=': signed/unsigned mismatch
-     1>c:\users\benjamin.odom\documents\github\assesments\3. wumpus world\project1\eventhandle.cpp(19): warning C4018: '>=': signed/unsigned mismatch
-     1>c:\users\benjamin.odom\documents\github\assesments\3. wumpus world\project1\eventhandle.cpp(38): warning C4018: '<': signed/unsigned mismatch
-     1>c:\users\benjamin.odom\documents\github\assesments\3. wumpus world\project1\eventhandle.cpp(40): warning C4018: '<': signed/unsigned mismatch
-     1>c:\users\benjamin.odom\documents\github\assesments\3. wumpus world\project1\eventhandle.cpp(42): warning C4018: '<': signed/unsigned mismatch
-     1>c:\users\benjamin.odom\documents\github\assesments\3. wumpus world\project1\eventhandle.cpp(48): warning C4018: '<': signed/unsigned mismatch
-         Dungeon.cpp
-         Generating Code...
-         Compiling...
-         Main.cpp
-         Loop.cpp
-         Grid.cpp
-     1>c:\users\benjamin.odom\documents\github\assesments\3. wumpus world\project1\grid.cpp(25): warning C4018: '<': signed/unsigned mismatch
-     1>c:\users\benjamin.odom\documents\github\assesments\3. wumpus world\project1\grid.cpp(27): warning C4018: '<': signed/unsigned mismatch
-     1>c:\users\benjamin.odom\documents\github\assesments\3. wumpus world\project1\grid.cpp(86): warning C4018: '<': signed/unsigned mismatch
-         Generating Code...
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\benjamin.odom\Documents\GitHub\Assesments\3. Wumpus World\Debug\Project1.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\benjamin.odom\Documents\GitHub\Assesments\3. Wumpus World\Debug\Project1.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\benjamin.odom\Documents\GitHub\Assesments\3. Wumpus World\Debug\Project1.lib" /MACHINE:X86 Debug\EventHandle.obj
          Debug\Grid.obj
@@ -48,4 +18,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:07.61
+Time Elapsed 00:00:01.14

@@ -1,4 +1,14 @@
-#pragma once
+////////////////////////////////////////////////////////////
+// File: MainLoop.h
+// Author: Ben Odom
+// Date Created: 09/04/2015
+// Brief: This file contains the namespace 'Loop' 
+//        which will act as a template for all other game
+//        loops
+////////////////////////////////////////////////////////////
+
+#ifndef _LOOP_H_
+#define _LOOP_H_
 
 #include "EventHandle.h"
 
@@ -19,3 +29,4 @@ namespace LoopHandle
 	};
 }
 
+#endif // _LOOP_H_

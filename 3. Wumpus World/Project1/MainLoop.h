@@ -1,5 +1,5 @@
 ////////////////////////////////////////////////////////////
-// File: LoopHandle.h
+// File: MainLoop.h
 // Author: Ben Odom
 // Date Created: 09/04/2015
 // Brief: This file contains the class 'MainLoop' which

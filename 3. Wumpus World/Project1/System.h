@@ -47,7 +47,9 @@ namespace System
 	};
 
 	void Print(const int ac_iPosX, const int ac_iPosY, const char *ac_pcFormat, ...); // Broken function that attempted to set the console print line and then pass the remaining arguments to 'printf_s'
-	void Print(const std::string ac_sTextToPrint, const int ac_ciLength, const int ac_iPosX = -1, const int ac_iPosY = -1);
+	void Print(const std::string ac_sTextToPrint, const int ac_iLength, const int ac_iPosX = -1, const int ac_iPosY = -1);
+
+	void Clear(const int ac_iPosX, const int ac_iPosY, const int ac_iLineLength);
 	
 	void ToLower(char * a_pcUppercaseWord, const int ac_iSize);
 
@@ -63,7 +65,7 @@ namespace System
 	// Will return a random number as either a float or an int based on which type is passed
 	// Expects a starting number and an ending number such as 1, 10 which gets a number between 1 and 10
 	// Make sure to put an 'f' at the end of number constants to define it as float such as '1.0f'
-	int Random(int a_fMin, int a_fMax);
+	int Random(int a_iMin, int a_iMax);
 	float Random(float a_fMin, float a_fMax);
 
 	void Init(const int a_ciColor = LIGHT_GRAY);
