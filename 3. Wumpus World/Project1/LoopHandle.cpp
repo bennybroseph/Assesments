@@ -11,7 +11,7 @@ namespace LoopHandle
 	{
 		System::Init();
 
-		MainLoop oMainLoop;
+		MainLoop oMainLoop; // Creates an object of the 'MainLoop' class
 		oMainLoop.Run();
 	}
 	void Quit()

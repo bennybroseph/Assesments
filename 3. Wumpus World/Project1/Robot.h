@@ -26,6 +26,9 @@ namespace Dungeon
 
 		void FireArrow(); // Attempts to fire an arrow at the Wumpus. Can fail and waste the arrow
 
+		void KillWumpus(int a_iPosX, int a_iPosY); // Removes the Wumpus from the grid
+		void FailShot();
+
 		void GetPos(int &a_iPosX, int &a_iPosY, int &a_iFacing); // Returns the current position of the player and where they are facing. Currently unused
 		bool IsAlive(); // Returns whether or not the player is alive. When you get the gold or die the loop will exit
 

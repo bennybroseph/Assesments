@@ -5,13 +5,13 @@ const unsigned int PRINT_POSX = 30;
 
 namespace LoopHandle
 {
-	void MainLoop::Handle()
+	void MainLoop::Handle() // Inherited from 'Loop'. Will call 'Robot's 'Handle' function as well
 	{
 		if (m_iControls == 0)
 			m_bIsRunning = Dungeon::Handle();
 	}
 
-	void MainLoop::OnKeyPress(int a_iKey)
+	void MainLoop::OnKeyPress(int a_iKey) // Inherited from 'EventHandle'. Will pass this information on to 'Robot's 'OnKeyPress' as well
 	{
 		switch (a_iKey)
 		{
@@ -25,7 +25,7 @@ namespace LoopHandle
 		}
 		}
 	}
-	void MainLoop::OnKeyRepeat(int a_iKey)
+	void MainLoop::OnKeyRepeat(int a_iKey) // Inherited from 'EventHandle'.
 	{
 		switch (a_iKey)
 		{
@@ -33,7 +33,7 @@ namespace LoopHandle
 		default:break;
 		}
 	}
-	void MainLoop::OnKeyRelease(int a_iKey)
+	void MainLoop::OnKeyRelease(int a_iKey) // Inherited from 'EventHandle'.
 	{
 		switch (a_iKey)
 		{
@@ -42,7 +42,7 @@ namespace LoopHandle
 		}
 	}
 
-	MainLoop::MainLoop()
+	MainLoop::MainLoop() // Will ask the user which kind of input they want to use
 	{
 		m_bIsRunning = true;
 

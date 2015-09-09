@@ -16,9 +16,9 @@
 
 namespace Dungeon
 {
-	bool Handle();
+	bool Handle(); // This is called by the 'MainLoop' when text input is selected
 
-	bool OnKeyPress(int a_iKey);
+	bool OnKeyPress(int a_iKey); // THis is called by the 'MainLoop' when standard input is selected
 
 	void Init();
 	void Quit();

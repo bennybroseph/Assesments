@@ -24,7 +24,7 @@
 
 namespace System
 {
-	enum COLOR : int
+	enum COLOR : int // Holds the color values that windows uses for the console colors for font and background
 	{
 		BLACK,
 		BLUE,
@@ -41,10 +41,12 @@ namespace System
 		LIGHT_RED,
 		LIGHT_MAGENTA,
 		YELLOW,
-		WHITE
+		WHITE,
+
+		C_COUNT
 	};
 
-	void Print(const int ac_iPosX, const int ac_iPosY, const char *ac_pcFormat, ...);
+	void Print(const int ac_iPosX, const int ac_iPosY, const char *ac_pcFormat, ...); // Broken function that attempted to set the console print line and then pass the remaining arguments to 'printf_s'
 	void Print(const std::string ac_sTextToPrint, const int ac_ciLength, const int ac_iPosX = -1, const int ac_iPosY = -1);
 	
 	void ToLower(char * a_pcUppercaseWord, const int ac_iSize);

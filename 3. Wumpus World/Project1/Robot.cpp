@@ -11,11 +11,11 @@ namespace Dungeon
 {
 	void Robot::Handle()
 	{
-		Clear(); 
+		Clear();
 
 		System::ShowCursor(); // Shows the console cursor
 		System::Print("Capitalization does *not* matter", PRINT_WIDTH, PRINT_POSX, m_iPrintLine); m_iPrintLine += 2;
-		System::Print("Face:  N / North | S / South | E / East | W / West", PRINT_WIDTH, PRINT_POSX, m_iPrintLine++); 
+		System::Print("Face:  N / North | S / South | E / East | W / West", PRINT_WIDTH, PRINT_POSX, m_iPrintLine++);
 		System::Print("Move:  U / Up    | M / Move  | Forward  | Walk", PRINT_WIDTH, PRINT_POSX, m_iPrintLine++);
 		System::Print("Mark:  Wumpus    | Pit       | Gold     | Clear", PRINT_WIDTH, PRINT_POSX, m_iPrintLine++);
 		System::Print("Arrow: F / Fire  | A / Arrow | Shoot    | Kill", PRINT_WIDTH, PRINT_POSX, m_iPrintLine++);
@@ -34,7 +34,7 @@ namespace Dungeon
 		System::ToLower(cBuffer, 256); // Will convert the input string to all lower case letters
 
 		if (!strcmp(cBuffer, "n") || !strcmp(cBuffer, "north"))
-			m_iFacing = DIRECTION::UP; 
+			m_iFacing = DIRECTION::UP;
 		if (!strcmp(cBuffer, "w") || !strcmp(cBuffer, "west"))
 			m_iFacing = DIRECTION::LEFT;
 		if (!strcmp(cBuffer, "s") || !strcmp(cBuffer, "south"))
@@ -43,9 +43,9 @@ namespace Dungeon
 			m_iFacing = DIRECTION::RIGHT;
 
 		bool bMoved = false; // If the player moves, this value will be set to true and the screen will be redrawn
-		if (!strcmp(cBuffer, "u") || !strcmp(cBuffer, "up") || 
+		if (!strcmp(cBuffer, "u") || !strcmp(cBuffer, "up") ||
 			!strcmp(cBuffer, "m") || !strcmp(cBuffer, "move") ||
-			!strcmp(cBuffer, "forward") ||			
+			!strcmp(cBuffer, "forward") ||
 			!strcmp(cBuffer, "walk"))
 		{
 			System::SetCursor(m_iPosX, m_iPosY, 0); std::cout << m_oGrid.m_vcGrid[m_iPosX][m_iPosY];
@@ -70,15 +70,15 @@ namespace Dungeon
 		if (!strcmp(cBuffer, "clear"))
 			cTemp = TILE::EMPTY;
 
-		if (!strcmp(cBuffer, "f") || !strcmp(cBuffer, "fire") || 
+		if (!strcmp(cBuffer, "f") || !strcmp(cBuffer, "fire") ||
 			!strcmp(cBuffer, "a") || !strcmp(cBuffer, "arrow") ||
 			!strcmp(cBuffer, "shoot") ||
 			!strcmp(cBuffer, "kill"))
-			FireArrow();
+			FireArrow(); // Attempts to shoot the Wumpus
 
-		if (cTemp > 0)
+		if (cTemp > 0) // If the user wants to mark a tile as a possible trap...
 		{
-			switch (m_iFacing)
+			switch (m_iFacing) // Check the tile they want to mark
 			{
 			case DIRECTION::UP:	m_oPercievedGrid.m_vcGrid[m_iPosX][m_iPosY - 1] = cTemp; break;
 			case DIRECTION::LEFT: m_oPercievedGrid.m_vcGrid[m_iPosX - 1][m_iPosY] = cTemp; break;
@@ -96,8 +96,9 @@ namespace Dungeon
 
 	void Robot::RecieveSignal()
 	{
-		bool bMustPause = false;
+		bool bMustPause = false; // This will be set to true if the user is next to a trap
 
+		// Check for Wumpus on all 4 directions
 		if ((m_oGrid.m_vcGrid[m_iPosX + 1][m_iPosY] == TILE::WUMPUS) ||
 			(m_oGrid.m_vcGrid[m_iPosX - 1][m_iPosY] == TILE::WUMPUS) ||
 			(m_oGrid.m_vcGrid[m_iPosX][m_iPosY + 1] == TILE::WUMPUS) ||
@@ -107,6 +108,7 @@ namespace Dungeon
 			System::Print("The Robot smells an awful stench...", PRINT_WIDTH, PRINT_POSX, m_iPrintLine++);
 		}
 
+		// Check for Gold on all 4 directions
 		if ((m_oGrid.m_vcGrid[m_iPosX + 1][m_iPosY] == TILE::GOLD) ||
 			(m_oGrid.m_vcGrid[m_iPosX - 1][m_iPosY] == TILE::GOLD) ||
 			(m_oGrid.m_vcGrid[m_iPosX][m_iPosY + 1] == TILE::GOLD) ||
@@ -116,6 +118,7 @@ namespace Dungeon
 			System::Print("The Robot sees a glitter...", PRINT_WIDTH, PRINT_POSX, m_iPrintLine++);
 		}
 
+		// Check for Pit on all 4 directions
 		if ((m_oGrid.m_vcGrid[m_iPosX + 1][m_iPosY] == TILE::PIT) ||
 			(m_oGrid.m_vcGrid[m_iPosX - 1][m_iPosY] == TILE::PIT) ||
 			(m_oGrid.m_vcGrid[m_iPosX][m_iPosY + 1] == TILE::PIT) ||
@@ -131,13 +134,15 @@ namespace Dungeon
 			Clear();
 		}
 	}
-	bool Robot::Collision()
+	bool Robot::Collision() // Makes sure the players 'm_iPosX' and 'm_iPosY' are valid, and check for traps
 	{
+		// Makes sure the player doesn't go off the grid on the left side
 		if (m_iPosX < 1)
 			m_iPosX = 1;
 		if (m_iPosY < 1)
 			m_iPosY = 1;
 
+		// Makes sure the player doesn't go off the grid on the right side
 		if (m_iPosX > MAX_ROWS)
 			m_iPosX = MAX_ROWS;
 		if (m_iPosY > MAX_COLLUMNS)
@@ -148,6 +153,7 @@ namespace Dungeon
 		if (m_iFacing > 3)
 			m_iFacing = 0;
 
+		// If the player ran into the Wumpus
 		if (m_oGrid.m_vcGrid[m_iPosX][m_iPosY] == TILE::WUMPUS)
 		{
 			Clear();
@@ -159,6 +165,7 @@ namespace Dungeon
 			System::Pause();
 			return true;
 		}
+		// If the player fell into a Pit
 		else if (m_oGrid.m_vcGrid[m_iPosX][m_iPosY] == TILE::PIT)
 		{
 			Clear();
@@ -170,6 +177,7 @@ namespace Dungeon
 			System::Pause();
 			return true;
 		}
+		// If the player has found the gold
 		else if (m_oGrid.m_vcGrid[m_iPosX][m_iPosY] == TILE::GOLD)
 		{
 			Clear();
@@ -186,6 +194,7 @@ namespace Dungeon
 			return true;
 		}
 
+		// If the player has returned to the starting position with the gold
 		if ((m_iPosX == 1 && m_iPosY == 1) && (m_bHasGold))
 		{
 			Clear();
@@ -202,7 +211,7 @@ namespace Dungeon
 
 		return false;
 	}
-	void Robot::Draw()
+	void Robot::Draw() // Draws the player in the grid
 	{
 		System::SetCursor(m_iPosX, m_iPosY, 0);
 		switch (m_iFacing)
@@ -216,97 +225,45 @@ namespace Dungeon
 
 	void Robot::FireArrow()
 	{
-		if (m_iArrowCount)
+		if (m_iArrowCount) // If the player still has an arrow
 		{
-			switch (m_iFacing)
+			switch (m_iFacing) // Check each direction
 			{
 			case DIRECTION::UP:
 			{
 				if (m_oGrid.m_vcGrid[m_iPosX][m_iPosY - 1] == TILE::WUMPUS)
-				{
-					m_oGrid.m_vcGrid[m_iPosX][m_iPosY - 1] = TILE::EMPTY;
-					--m_iArrowCount;
-					System::Print("The Wumpus was slain!", PRINT_WIDTH, PRINT_POSX, m_iPrintLine++);
-
-					System::Pause();
-					Clear();
-				}
+					KillWumpus(m_iPosX, m_iPosY - 1);
 				else
-				{
-					System::Print("Nothing happened.", 0, 40, m_iPrintLine++);
-					System::Print("You are out of arrows...", PRINT_WIDTH, PRINT_POSX, m_iPrintLine++);
-
-					System::Pause();
-					Clear();
-				}
+					FailShot();
 				break;
 			}
 			case DIRECTION::LEFT:
 			{
 				if (m_oGrid.m_vcGrid[m_iPosX - 1][m_iPosY] == TILE::WUMPUS)
-				{
-					m_oGrid.m_vcGrid[m_iPosX - 1][m_iPosY] = TILE::EMPTY;
-					--m_iArrowCount;
-					System::Print("The Wumpus was slain!", PRINT_WIDTH, PRINT_POSX, m_iPrintLine++);
-
-					System::Pause();
-					Clear();
-				}
+					KillWumpus(m_iPosX - 1, m_iPosY);
 				else
-				{
-					System::Print("Nothing happened.", PRINT_WIDTH, PRINT_POSX, m_iPrintLine++);
-					System::Print("You are out of arrows...", PRINT_WIDTH, PRINT_POSX, m_iPrintLine++);
-
-					System::Pause();
-					Clear();
-				}
+					FailShot();
 				break;
 			}
 			case DIRECTION::DOWN:
 			{
 				if (m_oGrid.m_vcGrid[m_iPosX][m_iPosY + 1] == TILE::WUMPUS)
-				{
-					m_oGrid.m_vcGrid[m_iPosX][m_iPosY + 1] = TILE::EMPTY;
-					--m_iArrowCount;
-					System::Print("The Wumpus was slain!", PRINT_WIDTH, PRINT_POSX, m_iPrintLine++);
-
-					System::Pause();
-					Clear();
-				}
+					KillWumpus(m_iPosX, m_iPosY + 1);
 				else
-				{
-					System::Print("Nothing happened.", PRINT_WIDTH, PRINT_POSX, m_iPrintLine++);
-					System::Print("You are out of arrows...", PRINT_WIDTH, PRINT_POSX, m_iPrintLine++);
-
-					System::Pause();
-					Clear();
-				}
+					FailShot();
 				break;
 			}
 			case DIRECTION::RIGHT:
 			{
 				if (m_oGrid.m_vcGrid[m_iPosX + 1][m_iPosY] == TILE::WUMPUS)
-				{
-					m_oGrid.m_vcGrid[m_iPosX + 1][m_iPosY] = TILE::EMPTY;
-					--m_iArrowCount;
-					System::Print("The Wumpus was slain!", PRINT_WIDTH, PRINT_POSX, m_iPrintLine++);
-
-					System::Pause();
-					Clear();
-				}
+					KillWumpus(m_iPosX + 1, m_iPosY);
 				else
-				{
-					System::Print("Nothing happened.", PRINT_WIDTH, PRINT_POSX, m_iPrintLine++);
-					System::Print("You are out of arrows...", PRINT_WIDTH, PRINT_POSX, m_iPrintLine++);
-
-					System::Pause();
-					Clear();
-				}
+					FailShot();
 				break;
 			}
 			}
 		}
-		else
+		else // When the player has no arrow left
 		{
 			System::Print("Your Robot has no arrows to fire...", PRINT_WIDTH, PRINT_POSX, m_iPrintLine++);
 
@@ -315,22 +272,41 @@ namespace Dungeon
 		}
 	}
 
-	void Robot::GetPos(int &a_iPosX, int &a_iPosY, int &a_iFacing)
+	void Robot::KillWumpus(int a_iPosX, int a_iPosY)
+	{
+		m_oGrid.m_vcGrid[a_iPosX][a_iPosY] = TILE::EMPTY;
+
+		--m_iArrowCount;
+		System::Print("The Wumpus was slain!", PRINT_WIDTH, PRINT_POSX, m_iPrintLine++);
+
+		System::Pause();
+		Clear();
+	}
+	void Robot::FailShot()
+	{
+		System::Print("Nothing happened.", 0, 40, m_iPrintLine++);
+		System::Print("You are out of arrows...", PRINT_WIDTH, PRINT_POSX, m_iPrintLine++);
+
+		System::Pause();
+		Clear();
+	}
+
+	void Robot::GetPos(int &a_iPosX, int &a_iPosY, int &a_iFacing) // Unused currently
 	{
 		a_iPosX = m_iPosX;
 		a_iPosY = m_iPosY;
 
 		a_iFacing = m_iFacing;
 	}
-	bool Robot::IsAlive()
+	bool Robot::IsAlive() // Returns whether the player is currently alive or not
 	{
 		return m_bIsAlive;
 	}
 
 	void Robot::OnKeyPress(int a_iKey)
 	{
-		bool bMoved = false;
-		char cTemp = NULL;
+		bool bMoved = false; // Will determine if the player moves this step or not
+		char cTemp = NULL; // Will hold the tile value the user wants to mark as questionable 
 
 		switch (a_iKey)
 		{
@@ -357,7 +333,7 @@ namespace Dungeon
 		case 0x47: cTemp = TILE::GOLD_Q; break; // G Key
 		case 0x58: cTemp = TILE::EMPTY; break; // X Key
 
-		case 0x46: FireArrow(); break;
+		case 0x46: FireArrow(); break; // F Key
 
 		default: break;
 		}
@@ -375,7 +351,6 @@ namespace Dungeon
 
 		if (!Collision())
 		{
-
 			m_oPercievedGrid.Draw();
 			Draw();
 
@@ -388,7 +363,7 @@ namespace Dungeon
 	{
 		system("cls");
 
-		m_iPrintLine = 0;
+		m_iPrintLine = 0; // Reset where the which line the console prints to
 
 		m_oPercievedGrid.Draw();
 		Draw();
@@ -396,7 +371,7 @@ namespace Dungeon
 
 	Robot::Robot()
 	{
-
+		// Empty Constructor
 	}
 	Robot::Robot(const int a_icPosX, const int a_icPosY, const int a_icFacing)
 	{

@@ -5,7 +5,7 @@ const unsigned int KEY_PRESS_DELAY = 200;
 
 const unsigned int MAX_KEYS = 8;
 
-void EventHandle::ParseInput()
+void EventHandle::ParseInput() // Decides which keys have been pressed/released and which need to be repeated
 {
 	if (m_vKeys.size() < m_vPrevKeys.size())
 	{
@@ -18,22 +18,22 @@ void EventHandle::ParseInput()
 		{
 			if (i >= m_vPrevKeys.size())
 			{
-				m_vSincePressed.push_back(clock() + KEY_PRESS_DELAY);
-				m_vSinceRepeat.push_back(clock() + KEY_PRESS_DELAY + KEY_REPEAT_PRESS_DELAY);
+				m_vUntilPressed.push_back(clock() + KEY_PRESS_DELAY);
+				m_vUntilRepeat.push_back(clock() + KEY_PRESS_DELAY + KEY_REPEAT_PRESS_DELAY);
 
 			}
 			OnKeyPress(m_vKeys[i]);
 		}
-		else if ((m_vKeys[i] == m_vPrevKeys[i]) && (clock() > m_vSinceRepeat[i]) && (clock() > m_vSincePressed[i]))
+		else if ((m_vKeys[i] == m_vPrevKeys[i]) && (clock() > m_vUntilRepeat[i]) && (clock() > m_vUntilPressed[i]))
 		{
-			m_vSinceRepeat[i] = clock() + KEY_REPEAT_PRESS_DELAY;
+			m_vUntilRepeat[i] = clock() + KEY_REPEAT_PRESS_DELAY;
 			OnKeyRepeat(m_vKeys[i]);
 		}
 	}
 	m_vPrevKeys = m_vKeys;
 	m_vKeys.clear();
 }
-void EventHandle::OrderInput()
+void EventHandle::OrderInput() // If input has moved around in the vector, re-orders it to match 
 {
 	for (int i = 0; i < m_vKeys.size(); ++i)
 	{
@@ -42,15 +42,15 @@ void EventHandle::OrderInput()
 			if ((i < m_vPrevKeys.size()) && (m_vKeys[i] == m_vPrevKeys[j]))
 			{
 				iter_swap(m_vPrevKeys.begin() + i, m_vPrevKeys.begin() + j);
-				iter_swap(m_vSinceRepeat.begin() + i, m_vSinceRepeat.begin() + j);
-				iter_swap(m_vSincePressed.begin() + i, m_vSincePressed.begin() + j);
+				iter_swap(m_vUntilRepeat.begin() + i, m_vUntilRepeat.begin() + j);
+				iter_swap(m_vUntilPressed.begin() + i, m_vUntilPressed.begin() + j);
 			}
 			else if ((j < m_vKeys.size()) && (m_vKeys[i] == m_vPrevKeys[j]))
 				iter_swap(m_vKeys.begin() + i, m_vKeys.begin() + j);
 		}
 	}
 }
-void EventHandle::PollInput()
+void EventHandle::PollInput() // Grabs input from 'GetAsyncKeyState()'
 {
 	int i = 0;
 	FlushConsoleInputBuffer(GetStdHandle(STD_INPUT_HANDLE));
@@ -83,30 +83,31 @@ void EventHandle::PollInput()
 	if (!i)
 	{
 		m_vPrevKeys.clear();
-		m_vSincePressed.clear();
-		m_vSinceRepeat.clear();
+		m_vUntilPressed.clear();
+		m_vUntilRepeat.clear();
 	}
 }
 
-void EventHandle::OnKeyPress(int a_iKey)
+void EventHandle::OnKeyPress(int a_iKey) // Gets called when a key is pressed down initially
 {
 	// Virtual, Do Nothing...
 }
-void EventHandle::OnKeyRepeat(int a_iKey)
+void EventHandle::OnKeyRepeat(int a_iKey) // Gets called when the delay time has been reached, and everytime the repeat time has been reached
 {
 	// Virtual, Do Nothing...
 }
-void EventHandle::OnKeyRelease(int a_iKey)
+void EventHandle::OnKeyRelease(int a_iKey) // Gets called whne the key is no longer recognized as being pressed down
 {
 	// Virtual, Do Nothing...
 }
 
 EventHandle::EventHandle()
 {
-	//m_vKeys.assign(8,0);
+	// Empty Constructor
 }
 
 
 EventHandle::~EventHandle()
 {
+	// Virtual, Do Nothing...
 }

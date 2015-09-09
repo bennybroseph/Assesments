@@ -8,7 +8,7 @@ namespace System
 	CONSOLE_CURSOR_INFO hCursorInfo;
 	CONSOLE_SCREEN_BUFFER_INFO hBufferInfo;
 
-	void Print(const int ac_iPosX, const int ac_iPosY, const char *ac_pcFormat, ...)
+	void Print(const int ac_iPosX, const int ac_iPosY, const char *ac_pcFormat, ...) // Broken function that attempted to set the console print line and then pass the remaining arguments to 'printf_s'
 	{
 		va_list arguments;
 		va_start(arguments, ac_pcFormat);
