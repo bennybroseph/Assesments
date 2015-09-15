@@ -1,11 +1,12 @@
 ////////////////////////////////////////////////////////////
-// File: LoopHandle.h
+// File: EventHandle.h
 // Author: Ben Odom
 // Date Created: 09/04/2015
-// Brief: This file contains the 'LoopHandle' namespace and
-//        it's small class 'Loop' which is basically a blue
-//        print for the 'Main Loop' class which will
-//        hold the code for Wumpus World's loop sequence
+// Brief: This file contains the 'EventHandle' class which
+//        contains all the virtual functions needed for 
+//        input. All of the 'OnKey' functions get called
+//        automatically in the loop, and simply need to be 
+//        redefined by the inheriting class to be used.
 ////////////////////////////////////////////////////////////
 
 #ifndef _EVENTHANDLE_H_

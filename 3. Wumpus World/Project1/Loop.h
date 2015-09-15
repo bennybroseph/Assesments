@@ -1,8 +1,8 @@
 ////////////////////////////////////////////////////////////
-// File: MainLoop.h
+// File: Loop.h
 // Author: Ben Odom
 // Date Created: 09/04/2015
-// Brief: This file contains the namespace 'Loop' 
+// Brief: This file contains the class 'Loop' 
 //        which will act as a template for all other game
 //        loops
 ////////////////////////////////////////////////////////////

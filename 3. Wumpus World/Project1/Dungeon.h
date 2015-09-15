@@ -4,7 +4,7 @@
 // Date Created: 09/04/2015
 // Brief: This file contains the 'Dungeon' namespace which
 //        will act as the Wumpus World handler so to speak.
-//        It has an member object of the AI 'Robot' and
+//        It has an member object of the Player 'Robot' and
 //        will make sure to send output to the user as to
 //        what's happening in the Wumpus World.
 ////////////////////////////////////////////////////////////
