@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Engine">
+      <UniqueIdentifier>{f951161e-97b4-469e-90d1-7cecac283727}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine\Debug">
+      <UniqueIdentifier>{7fc35850-1290-446e-90b0-ccacd2dabee1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine\EventHandler">
+      <UniqueIdentifier>{20f90a87-40b3-4ce8-bfe9-2f828f8bc400}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine\FPS">
+      <UniqueIdentifier>{7a9faabb-17b6-4f39-a322-bc7eebaf7860}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine\Graphics">
+      <UniqueIdentifier>{1cef71bb-31cb-4345-bf98-af355a80367b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine\LoopHandle">
+      <UniqueIdentifier>{36fac904-4acb-4ae7-88a8-5e680ed6c985}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine\LoopHandle\Loop">
+      <UniqueIdentifier>{68c7c101-b7eb-48b1-b134-93a0c65ae5cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine\Text">
+      <UniqueIdentifier>{8c0743a4-fe74-40df-8be6-365cdbfc5ba7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Shooter">
+      <UniqueIdentifier>{779d7a83-dd65-452b-805f-13c4e21d301d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Debug.cpp">
+      <Filter>Source Files\Engine\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="EventHandler.cpp">
+      <Filter>Source Files\Engine\EventHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="FPS.cpp">
+      <Filter>Source Files\Engine\FPS</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics.cpp">
+      <Filter>Source Files\Engine\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="LoopHandle.cpp">
+      <Filter>Source Files\Engine\LoopHandle</Filter>
+    </ClCompile>
+    <ClCompile Include="Loop.cpp">
+      <Filter>Source Files\Engine\LoopHandle\Loop</Filter>
+    </ClCompile>
+    <ClCompile Include="Text.cpp">
+      <Filter>Source Files\Engine\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="MainLoop.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Tank.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Debug.h">
+      <Filter>Source Files\Engine\Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="EventHandler.h">
+      <Filter>Source Files\Engine\EventHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="FPS.h">
+      <Filter>Source Files\Engine\FPS</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics.h">
+      <Filter>Source Files\Engine\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="LoopHandle.h">
+      <Filter>Source Files\Engine\LoopHandle</Filter>
+    </ClInclude>
+    <ClInclude Include="Loop.h">
+      <Filter>Source Files\Engine\LoopHandle\Loop</Filter>
+    </ClInclude>
+    <ClInclude Include="Text.h">
+      <Filter>Source Files\Engine\Text</Filter>
+    </ClInclude>
+    <ClInclude Include="MainLoop.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Tank.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
