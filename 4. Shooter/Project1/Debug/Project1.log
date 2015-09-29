@@ -1,2 +1,48 @@
-﻿  Player.cpp
-  Project1.vcxproj -> C:\Users\benjamin.odom\Documents\GitHub\Assesments\4. Shooter\Debug\Project1.exe
+﻿Build started 9/29/2015 1:16:25 AM.
+     1>Project "C:\Users\Womb-Raider\Documents\GitHub\Assesments\4. Shooter\Project1\Project1.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /IC:\OpenGL\include /IC:\SDL\include /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Graphics.cpp
+         Graphics.cpp
+     1>c:\users\womb-raider\documents\github\assesments\4. shooter\project1\graphics.cpp(36): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+     1>c:\users\womb-raider\documents\github\assesments\4. shooter\project1\graphics.cpp(50): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+     1>c:\users\womb-raider\documents\github\assesments\4. shooter\project1\graphics.cpp(51): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+     1>c:\users\womb-raider\documents\github\assesments\4. shooter\project1\graphics.cpp(52): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
+     1>c:\users\womb-raider\documents\github\assesments\4. shooter\project1\graphics.cpp(54): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+     1>c:\users\womb-raider\documents\github\assesments\4. shooter\project1\graphics.cpp(139): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+     1>c:\users\womb-raider\documents\github\assesments\4. shooter\project1\graphics.cpp(141): warning C4244: 'initializing': conversion from 'const int' to 'float', possible loss of data
+     1>c:\users\womb-raider\documents\github\assesments\4. shooter\project1\graphics.cpp(142): warning C4244: 'initializing': conversion from 'const int' to 'float', possible loss of data
+     1>c:\users\womb-raider\documents\github\assesments\4. shooter\project1\graphics.cpp(144): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+     1>c:\users\womb-raider\documents\github\assesments\4. shooter\project1\graphics.cpp(156): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+     1>c:\users\womb-raider\documents\github\assesments\4. shooter\project1\graphics.cpp(163): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+     1>c:\users\womb-raider\documents\github\assesments\4. shooter\project1\graphics.cpp(170): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+     1>c:\users\womb-raider\documents\github\assesments\4. shooter\project1\graphics.cpp(177): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+     1>c:\users\womb-raider\documents\github\assesments\4. shooter\project1\graphics.cpp(193): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+     1>c:\users\womb-raider\documents\github\assesments\4. shooter\project1\graphics.cpp(206): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+     1>c:\users\womb-raider\documents\github\assesments\4. shooter\project1\graphics.cpp(213): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+     1>c:\users\womb-raider\documents\github\assesments\4. shooter\project1\graphics.cpp(220): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+     1>c:\users\womb-raider\documents\github\assesments\4. shooter\project1\graphics.cpp(227): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+     1>c:\users\womb-raider\documents\github\assesments\4. shooter\project1\graphics.cpp(236): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+     1>c:\users\womb-raider\documents\github\assesments\4. shooter\project1\graphics.cpp(246): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+     1>c:\users\womb-raider\documents\github\assesments\4. shooter\project1\graphics.cpp(247): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+     1>c:\users\womb-raider\documents\github\assesments\4. shooter\project1\graphics.cpp(248): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
+     1>c:\users\womb-raider\documents\github\assesments\4. shooter\project1\graphics.cpp(250): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+     1>c:\users\womb-raider\documents\github\assesments\4. shooter\project1\graphics.cpp(265): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
+     1>c:\users\womb-raider\documents\github\assesments\4. shooter\project1\graphics.cpp(316): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Womb-Raider\Documents\GitHub\Assesments\4. Shooter\Debug\Project1.exe" /INCREMENTAL /NOLOGO /LIBPATH:C:\OpenGL\lib /LIBPATH:C:\SDL\lib SDL2.lib SDL2main.lib SDL2_image.lib SDL2_mixer.lib SDL2_ttf.lib glew32.lib glew32s.lib freeglut.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\Womb-Raider\Documents\GitHub\Assesments\4. Shooter\Debug\Project1.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Womb-Raider\Documents\GitHub\Assesments\4. Shooter\Debug\Project1.lib" /MACHINE:X86 Debug\Debug.obj
+         Debug\EventHandler.obj
+         Debug\FPS.obj
+         Debug\Graphics.obj
+         Debug\Loop.obj
+         Debug\LoopHandle.obj
+         Debug\Main.obj
+         Debug\MainLoop.obj
+         Debug\Player.obj
+         Debug\Tank.obj
+         Debug\Text.obj
+         Project1.vcxproj -> C:\Users\Womb-Raider\Documents\GitHub\Assesments\4. Shooter\Debug\Project1.exe
+     1>Done Building Project "C:\Users\Womb-Raider\Documents\GitHub\Assesments\4. Shooter\Project1\Project1.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.97

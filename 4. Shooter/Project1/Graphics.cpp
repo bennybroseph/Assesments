@@ -138,8 +138,11 @@ namespace Graphics
 			pow(ac_glSurface.w, 2) +
 			pow(ac_glSurface.h, 2)) / 2; // Distance between the image top left and bottom right. Then divided by two to get the radius.
 
-		float fAngleOffset = (180 - (2 * (atan((ac_glSurface.h / 2) / (ac_glSurface.w / 2)) * (180 / PI)))) / 2;
+		float fBig = (ac_glSurface.h >= ac_glSurface.w) ? ac_glSurface.h : ac_glSurface.w;
+		float fSmall = (ac_glSurface.h < ac_glSurface.w) ? ac_glSurface.h : ac_glSurface.w; // Need to divide the larger number over the smaller one
 
+		float fAngleOffset = (180 - (2 * (atan((fBig / 2) / (fSmall / 2)) * (180.0f / PI)))) / 2;
+		
 		glColor3f(1.0f, 1.0f, 1.0f);
 
 		glBindTexture(GL_TEXTURE_2D, ac_glSurface.Surface);
@@ -148,29 +151,29 @@ namespace Graphics
 		glColor3b(127, 127, 127);
 		glTexCoord2i(0, 0); //Position on texture to begin interpolation
 		glVertex3f(
-			ac_fPosX + (fRadius * cos((ac_glSurface.rotation[0] - (90 + fAngleOffset)) * (PI / 180))),
-			ac_fPosY + (fRadius * sin((ac_glSurface.rotation[0] - (90 + fAngleOffset)) * (PI / 180))),
+			ac_fPosX + (fRadius * cos((ac_glSurface.rotation[0] - (90.0f + fAngleOffset)) * (PI / 180.0f))),
+			ac_fPosY + (fRadius * sin((ac_glSurface.rotation[0] - (90.0f + fAngleOffset)) * (PI / 180.0f))),
 			0.f); //Vertex Coords
 
 		//Bottom-right vertex (corner)
 		glTexCoord2i(1, 0);
 		glVertex3f(
-			ac_fPosX + (fRadius * cos((ac_glSurface.rotation[0] - (90 - fAngleOffset)) * (PI / 180))),
-			ac_fPosY + (fRadius * sin((ac_glSurface.rotation[0] - (90 - fAngleOffset)) * (PI / 180))),
+			ac_fPosX + (fRadius * cos((ac_glSurface.rotation[0] - (90.0f - fAngleOffset)) * (PI / 180.0f))),
+			ac_fPosY + (fRadius * sin((ac_glSurface.rotation[0] - (90.0f - fAngleOffset)) * (PI / 180.0f))),
 			0.f);
 
 		//Top-right vertex (corner)
 		glTexCoord2i(1, 1);
 		glVertex3f(
-			ac_fPosX + (fRadius * cos((ac_glSurface.rotation[0] + (90 - fAngleOffset)) * (PI / 180))),
-			ac_fPosY + (fRadius * sin((ac_glSurface.rotation[0] + (90 - fAngleOffset)) * (PI / 180))),
+			ac_fPosX + (fRadius * cos((ac_glSurface.rotation[0] + (90.0f - fAngleOffset)) * (PI / 180.0f))),
+			ac_fPosY + (fRadius * sin((ac_glSurface.rotation[0] + (90.0f - fAngleOffset)) * (PI / 180.0f))),
 			0.f);
 
 		//Top-left vertex (corner)
 		glTexCoord2i(0, 1);
 		glVertex3f(
-			ac_fPosX + (fRadius * cos((ac_glSurface.rotation[0] + (90 + fAngleOffset)) * (PI / 180))),
-			ac_fPosY + (fRadius * sin((ac_glSurface.rotation[0] + (90 + fAngleOffset)) * (PI / 180))),
+			ac_fPosX + (fRadius * cos((ac_glSurface.rotation[0] + (90.0f + fAngleOffset)) * (PI / 180.0f))),
+			ac_fPosY + (fRadius * sin((ac_glSurface.rotation[0] + (90.0f + fAngleOffset)) * (PI / 180.0f))),
 			0.f);
 		glEnd();
 	}
@@ -180,11 +183,14 @@ namespace Graphics
 		const float ac_fOffsetX, const float ac_fOffsetY,
 		const float ac_fWidth, const float ac_fHeight)
 	{
-		int iRadius = sqrt(
+		float fRadius = sqrt(
 			pow(ac_fWidth, 2) +
 			pow(ac_fHeight, 2)) / 2; // Distance between the image top left and bottom right. Then divided by two to get the radius.
 
-		float fAngleOffset = (180 - (2 * (atan((ac_fHeight / 2) / (ac_fWidth / 2)) * (180 / PI)))) / 2;
+		float fBig = (ac_fHeight >= ac_fWidth) ? ac_fHeight : ac_fWidth;
+		float fSmall = (ac_fHeight < ac_fWidth) ? ac_fHeight : ac_fWidth; // Need to divide the larger number over the smaller one
+
+		float fAngleOffset = (180 - (2 * (atan((fBig / 2) / (fSmall / 2)) * (180.0f / PI)))) / 2;
 
 		glColor3f(1.0f, 1.0f, 1.0f);
 
@@ -195,29 +201,29 @@ namespace Graphics
 		glColor3b(127, 127, 127);
 		glTexCoord2f(ac_fOffsetX / ac_glSurface.w, ac_fOffsetY / ac_glSurface.h); // Position on texture to begin interpolation
 		glVertex3f(
-			ac_fPosX + (iRadius * cos((ac_glSurface.rotation[0] - (90 + fAngleOffset)) * (PI / 180))),
-			ac_fPosY + (iRadius * sin((ac_glSurface.rotation[0] - (90 + fAngleOffset)) * (PI / 180))),
+			ac_fPosX + (fRadius * cos((ac_glSurface.rotation[0] - (90.0f + fAngleOffset)) * (PI / 180.0f))),
+			ac_fPosY + (fRadius * sin((ac_glSurface.rotation[0] - (90.0f + fAngleOffset)) * (PI / 180.0f))),
 			0.f); //Vertex Coords
 
 		// Bottom-right vertex (corner)
 		glTexCoord2f((ac_fOffsetX / ac_glSurface.w) + (ac_fWidth / ac_glSurface.w), ac_fOffsetY / ac_glSurface.h);
 		glVertex3f(
-			ac_fPosX + (iRadius * cos((ac_glSurface.rotation[0] - (90 - fAngleOffset)) * (PI / 180))),
-			ac_fPosY + (iRadius * sin((ac_glSurface.rotation[0] - (90 - fAngleOffset)) * (PI / 180))),
+			ac_fPosX + (fRadius * cos((ac_glSurface.rotation[0] - (90.0f - fAngleOffset)) * (PI / 180.0f))),
+			ac_fPosY + (fRadius * sin((ac_glSurface.rotation[0] - (90.0f - fAngleOffset)) * (PI / 180.0f))),
 			0.f);
 
 		// Top-right vertex (corner)
 		glTexCoord2f((ac_fOffsetX / ac_glSurface.w) + (ac_fWidth / ac_glSurface.w), (ac_fOffsetY / ac_glSurface.h) + (ac_fHeight / ac_glSurface.h));
 		glVertex3f(
-			ac_fPosX + (iRadius * cos((ac_glSurface.rotation[0] + (90 - fAngleOffset)) * (PI / 180))),
-			ac_fPosY + (iRadius * sin((ac_glSurface.rotation[0] + (90 - fAngleOffset)) * (PI / 180))),
+			ac_fPosX + (fRadius * cos((ac_glSurface.rotation[0] + (90.0f - fAngleOffset)) * (PI / 180.0f))),
+			ac_fPosY + (fRadius * sin((ac_glSurface.rotation[0] + (90.0f - fAngleOffset)) * (PI / 180.0f))),
 			0.f);
 
 		// Top-left vertex (corner)
 		glTexCoord2f(ac_fOffsetX / ac_glSurface.w, (ac_fOffsetY / ac_glSurface.h) + (ac_fHeight / ac_glSurface.h));
 		glVertex3f(
-			ac_fPosX + (iRadius * cos((ac_glSurface.rotation[0] + (90 + fAngleOffset)) * (PI / 180))),
-			ac_fPosY + (iRadius * sin((ac_glSurface.rotation[0] + (90 + fAngleOffset)) * (PI / 180))),
+			ac_fPosX + (fRadius * cos((ac_glSurface.rotation[0] + (90.0f + fAngleOffset)) * (PI / 180.0f))),
+			ac_fPosY + (fRadius * sin((ac_glSurface.rotation[0] + (90.0f + fAngleOffset)) * (PI / 180.0f))),
 			0.f);
 		glEnd();
 

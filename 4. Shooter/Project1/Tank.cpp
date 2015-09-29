@@ -29,12 +29,12 @@ void Tank::Draw()
 
 	Graphics::DrawSurface(
 		m_glSurfaceTurret, 
-		m_fPosX + 6, 
-		m_fPosY + 3, 
-		73, 
-		130, 
-		20, 
-		37);
+		m_fPosX, 
+		m_fPosY, 
+		70, 
+		124, 
+		33, 
+		60);
 }
 
 Tank::Tank()

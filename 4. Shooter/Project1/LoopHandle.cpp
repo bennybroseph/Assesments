@@ -15,7 +15,7 @@ namespace LoopHandle
 		HWND consoleWindow = GetConsoleWindow(); // Get the current console window
 		SetWindowPos(consoleWindow, 0, 0, 0, 0, 0, SWP_NOSIZE | SWP_NOZORDER); // Move it to the Top Left and don't change its size or 'z' order
 
-		Graphics::Init(1920, 1080, 1.0f, true);
+		Graphics::Init(1280, 720, 1.0f, false);
 		Text::Init();
 		Debug::Init();
 		FPS::Init(60);
