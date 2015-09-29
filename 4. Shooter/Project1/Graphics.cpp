@@ -79,82 +79,40 @@ namespace Graphics
 
 	GLSurface LoadSurface(const std::string ac_sFilename)
 	{
-		GLSurface glSurface;
-		SDL_Surface* sdlSurface;
+		SDL_Surface* sdlSurface;		
 
 		sdlSurface = IMG_Load(ac_sFilename.c_str());
 		if (sdlSurface == NULL)
 		{
 			printf("SDL_Error: %s\n", SDL_GetError());
+
+			GLSurface glSurface;
 			return glSurface;
 		}
-
-		GLuint glTexture;
-		glGenTextures(1, &glTexture);
-		glBindTexture(GL_TEXTURE_2D, glTexture);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-		glTexImage2D(GL_TEXTURE_2D, 0, sdlSurface->format->BytesPerPixel, sdlSurface->w, sdlSurface->h, 0, GL_RGBA, GL_UNSIGNED_BYTE, sdlSurface->pixels);
-
-		glSurface.h = sdlSurface->h;
-		glSurface.w = sdlSurface->w;
-		glSurface.Surface = glTexture;
-
-		SDL_FreeSurface(sdlSurface);
-
-		return glSurface;
+	
+		return LoadSurface(sdlSurface);
 	}
-	GLSurface LoadSurface(const SDL_Surface *ac_psdlSurface)
+	GLSurface LoadSurface(SDL_Surface *a_psdlSurface)
 	{
 		GLSurface glSurface;
 
-		GLuint glTexture;
-		glGenTextures(1, &glTexture);
-		glBindTexture(GL_TEXTURE_2D, glTexture);
+		glGenTextures(1, &glSurface.Surface);
+		glBindTexture(GL_TEXTURE_2D, glSurface.Surface);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-		glTexImage2D(
-			GL_TEXTURE_2D,
-			0,
-			ac_psdlSurface->format->BytesPerPixel,
-			ac_psdlSurface->w,
-			ac_psdlSurface->h,
-			0,
-			GL_RGBA,
-			GL_UNSIGNED_BYTE,
-			ac_psdlSurface->pixels);
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, a_psdlSurface->w, a_psdlSurface->h, 0, GL_RGBA, GL_UNSIGNED_BYTE, a_psdlSurface->pixels);
 
-		glSurface.w = ac_psdlSurface->w;
-		glSurface.h = ac_psdlSurface->h;
+		glSurface.h = a_psdlSurface->h;
+		glSurface.w = a_psdlSurface->w;
 
-		glSurface.Surface = glTexture;
+		SDL_FreeSurface(a_psdlSurface);
 
 		return glSurface;
 	}
 
 	void DrawSurface(const GLSurface &ac_glSurface, const float ac_fPosX, const float ac_fPosY)
 	{
-		glColor3f(1.0f, 1.0f, 1.0f);
-
-		glBindTexture(GL_TEXTURE_2D, ac_glSurface.Surface);
-		glBegin(GL_QUADS);
-		//Bottom-left vertex (corner)
-		glColor3b(127, 127, 127);
-		glTexCoord2i(0, 0); //Position on texture to begin interpolation
-		glVertex2f(ac_fPosX - (ac_glSurface.w / 2), ac_fPosY - (ac_glSurface.h / 2)); //Vertex Coords
-
-		//Bottom-right vertex (corner)
-		glTexCoord2i(1, 0);
-		glVertex2f(ac_fPosX + (ac_glSurface.w / 2), ac_fPosY - (ac_glSurface.h / 2));
-
-		//Top-right vertex (corner)
-		glTexCoord2i(1, 1);
-		glVertex2f(ac_fPosX + (ac_glSurface.w / 2), ac_fPosY + (ac_glSurface.h / 2));
-
-		//Top-left vertex (corner)
-		glTexCoord2i(0, 1);
-		glVertex2f(ac_fPosX - (ac_glSurface.w / 2), ac_fPosY + (ac_glSurface.h / 2));
-		glEnd();
+		DrawSurface(ac_glSurface, ac_fPosX, ac_fPosY, 0.0f, 0.0f, ac_glSurface.w, ac_glSurface.h);
 	}
 	void DrawSurface(
 		const GLSurface &ac_glSurface,
@@ -171,23 +129,25 @@ namespace Graphics
 		glBindTexture(GL_TEXTURE_2D, ac_glSurface.Surface);
 
 		glBegin(GL_QUADS);
-		glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+		{ // Just to make the code look nicer. Unnecessary
+			glColor4f(ac_glSurface.color[0], ac_glSurface.color[1], ac_glSurface.color[2], ac_glSurface.color[3]);
 
-		// Bottom-left vertex (corner)
-		glTexCoord2f(ac_fOffsetX / ac_glSurface.w, ac_fOffsetY / ac_glSurface.h); // Position on texture to begin interpolation
-		glVertex2f(ac_fPosX - (ac_fWidth / 2), ac_fPosY - (ac_fHeight / 2)); // Vertex Coords
+			// Bottom-left vertex (corner)
+			glTexCoord2f(ac_fOffsetX / ac_glSurface.w, ac_fOffsetY / ac_glSurface.h); // Position on texture to begin interpolation
+			glVertex2f(round(ac_fPosX - (ac_fWidth / 2)), round(ac_fPosY - (ac_fHeight / 2))); // Vertex Coords
 
-		// Bottom-right vertex (corner)
-		glTexCoord2f((ac_fOffsetX / ac_glSurface.w) + (ac_fWidth / ac_glSurface.w), ac_fOffsetY / ac_glSurface.h);
-		glVertex2f(ac_fPosX + (ac_fWidth / 2), ac_fPosY - (ac_fHeight / 2));
+			// Bottom-right vertex (corner)
+			glTexCoord2f((ac_fOffsetX / ac_glSurface.w) + (ac_fWidth / ac_glSurface.w), ac_fOffsetY / ac_glSurface.h);
+			glVertex2f(round(ac_fPosX + (ac_fWidth / 2)), round(ac_fPosY - (ac_fHeight / 2)));
 
-		// Top-right vertex (corner)
-		glTexCoord2f((ac_fOffsetX / ac_glSurface.w) + (ac_fWidth / ac_glSurface.w), (ac_fOffsetY / ac_glSurface.h) + (ac_fHeight / ac_glSurface.h));
-		glVertex2f(ac_fPosX + (ac_fWidth / 2), ac_fPosY + (ac_fHeight / 2));
+			// Top-right vertex (corner)
+			glTexCoord2f((ac_fOffsetX / ac_glSurface.w) + (ac_fWidth / ac_glSurface.w), (ac_fOffsetY / ac_glSurface.h) + (ac_fHeight / ac_glSurface.h));
+			glVertex2f(round(ac_fPosX + (ac_fWidth / 2)), round(ac_fPosY + (ac_fHeight / 2)));
 
-		// Top-left vertex (corner)
-		glTexCoord2f(ac_fOffsetX / ac_glSurface.w, (ac_fOffsetY / ac_glSurface.h) + (ac_fHeight / ac_glSurface.h));
-		glVertex2f(ac_fPosX - (ac_fWidth / 2), ac_fPosY + (ac_fHeight / 2));
+			// Top-left vertex (corner)
+			glTexCoord2f(ac_fOffsetX / ac_glSurface.w, (ac_fOffsetY / ac_glSurface.h) + (ac_fHeight / ac_glSurface.h));
+			glVertex2f(round(ac_fPosX - (ac_fWidth / 2)), round(ac_fPosY + (ac_fHeight / 2)));
+		} // Just to make the code look nicer. Unnecessary
 		glEnd();
 
 		glPopMatrix(); // Reset the current matrix to the one that was saved.

@@ -25,9 +25,12 @@ namespace LoopHandle
 		default: m_oPlayer.OnKeyDown(a_eSym, mod, scancode); break;
 		}
 	}
-	void MainLoop::OnKeyUp(SDL_Keycode sym, Uint16 mod, SDL_Scancode scancode)
+	void MainLoop::OnKeyUp(SDL_Keycode a_eSym, Uint16 a_eMod, SDL_Scancode m_eScancode)
 	{
-
+		switch (a_eSym)
+		{
+		default: m_oPlayer.OnKeyUp(a_eSym, a_eMod, m_eScancode); break;
+		}
 	}
 
 	MainLoop::MainLoop()

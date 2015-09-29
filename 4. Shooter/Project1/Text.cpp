@@ -59,13 +59,13 @@ namespace Text
 		for (int j = 0; j < vsLines.size(); ++j)
 		{
 			sdlSurface = TTF_RenderText_Blended(ac_ttfFont.ttfFont, vsLines[j].c_str(), ac_ttfFont.sdlColor);
-
+			
 			glSurface = Graphics::LoadSurface(sdlSurface);
 
 			Graphics::DrawSurface(glSurface, ac_iPosX - (ac_bAlign)*(glSurface.w), (ac_iPosY + (j * 15)) - (glSurface.h - 2));
 		}
 
-		SDL_FreeSurface(sdlSurface);
+		glDeleteTextures(1, &glSurface.Surface);
 	}
 
 	void Print(const FontData &ac_ttfFont, const int ac_iPosX, const int ac_iPosY, const bool ac_bAlign, const int ac_iText)

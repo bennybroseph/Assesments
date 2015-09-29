@@ -8,9 +8,8 @@ private:
 	// Empty
 
 public:
-	void Move();
-
-	void OnKeyDown(SDL_Keycode a_eSym, Uint16 mod, SDL_Scancode scancode);
+	void OnKeyDown(SDL_Keycode a_eSym, Uint16 a_eMod, SDL_Scancode a_eScancode);
+	void OnKeyUp(SDL_Keycode a_eSym, Uint16 a_eMod, SDL_Scancode a_eScancode);
 
 	Player();
 	~Player();

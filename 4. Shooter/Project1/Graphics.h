@@ -17,6 +17,8 @@ struct GLSurface
 	GLuint Surface;
 	int w, h;
 	float rotation[3] = { 0, 0, 0 };
+
+	float color[4] = { 1.0f, 1.0f, 1.0f, 1.0f };
 };
 
 namespace Graphics
@@ -24,7 +26,7 @@ namespace Graphics
 	bool Init(const int ac_iWidth, const int ac_iHeight, const float ac_fScale = 3, const bool ac_bFullScreen = false);
 
 	GLSurface LoadSurface(const std::string ac_sFilename);
-	GLSurface LoadSurface(const SDL_Surface *ac_psdlSurface);
+	GLSurface LoadSurface(SDL_Surface *ac_psdlSurface);
 
 	void UpdateWindowName(const char *szBuffer);
 	void DrawSurface(const GLSurface &ac_glSurface, const float ac_fPosX, const float ac_fPosY);
