@@ -31,8 +31,8 @@ void Tank::Draw()
 		m_glSurfaceTurret, 
 		m_fPosX, 
 		m_fPosY, 
-		70, 
-		124, 
+		67, 
+		126, 
 		33, 
 		60);
 }
