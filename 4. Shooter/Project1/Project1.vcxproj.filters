@@ -37,8 +37,23 @@
     <Filter Include="Source Files\Engine\Text">
       <UniqueIdentifier>{8c0743a4-fe74-40df-8be6-365cdbfc5ba7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Shooter">
-      <UniqueIdentifier>{779d7a83-dd65-452b-805f-13c4e21d301d}</UniqueIdentifier>
+    <Filter Include="Source Files\Classes">
+      <UniqueIdentifier>{e80d0c0d-1283-40dd-b40e-e56a567674ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Classes\Time">
+      <UniqueIdentifier>{3398e4df-708e-442f-b155-f61bbf662c1b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Classes\Tank">
+      <UniqueIdentifier>{024a6867-1e6b-45e7-9b86-3caf0a557377}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Classes\Tank\Player">
+      <UniqueIdentifier>{12751d27-b630-4160-9743-00116fbec6b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Classes\MainLoop">
+      <UniqueIdentifier>{abe3f4d0-aff1-4f01-93f7-cb8b1fda9e95}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Classes\Tank\TreadMarks">
+      <UniqueIdentifier>{d02f9745-9bd1-480f-b5ba-eb90613aa6aa}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -66,20 +81,20 @@
     <ClCompile Include="Text.cpp">
       <Filter>Source Files\Engine\Text</Filter>
     </ClCompile>
-    <ClCompile Include="MainLoop.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Time.cpp">
+      <Filter>Source Files\Classes\Time</Filter>
     </ClCompile>
     <ClCompile Include="Tank.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Classes\Tank</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Classes\Tank\Player</Filter>
     </ClCompile>
-    <ClCompile Include="Time.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="MainLoop.cpp">
+      <Filter>Source Files\Classes\MainLoop</Filter>
     </ClCompile>
     <ClCompile Include="TreadMarks.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Classes\Tank\TreadMarks</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -104,20 +119,20 @@
     <ClInclude Include="Text.h">
       <Filter>Source Files\Engine\Text</Filter>
     </ClInclude>
-    <ClInclude Include="MainLoop.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Time.h">
+      <Filter>Source Files\Classes\Time</Filter>
     </ClInclude>
     <ClInclude Include="Tank.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files\Classes\Tank</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files\Classes\Tank\Player</Filter>
     </ClInclude>
-    <ClInclude Include="Time.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="MainLoop.h">
+      <Filter>Source Files\Classes\MainLoop</Filter>
     </ClInclude>
     <ClInclude Include="TreadMarks.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files\Classes\Tank\TreadMarks</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
