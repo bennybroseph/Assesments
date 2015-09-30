@@ -5,6 +5,9 @@
 void Tank::Handle()
 {
 	m_oTime.Handle();
+
+	Update();
+
 	Move();
 	Collision();
 	if (iDistanceTraveled > 8)
@@ -34,18 +37,23 @@ void Tank::Handle()
 		//draw(treadmarkTexture)
 		//}
 		m_oTreadMarks.New(
-			m_fPosX + ((m_glSurfaceBase.w - 30) * cos((m_glSurfaceBase.rotation[0] - 135) * (PI / 180.0f))),
-			m_fPosY + ((m_glSurfaceBase.h - 33) * sin((m_glSurfaceBase.rotation[0] - 135) * (PI / 180.0f))),
-			m_glSurfaceBase.rotation[0]);
+			m_fPosX + ((m_glSurfaceBase.w - 35) * cos((m_glSurfaceBase.rotation + 45) * (PI / 180.0f))),
+			m_fPosY + ((m_glSurfaceBase.h - 33) * sin((m_glSurfaceBase.rotation + 45) * (PI / 180.0f))),
+			m_glSurfaceBase.rotation);
 
 		m_oTreadMarks.New(
-			m_fPosX + ((m_glSurfaceBase.w - 30) * cos((m_glSurfaceBase.rotation[0] - 225) * (PI / 180.0f))),
-			m_fPosY + ((m_glSurfaceBase.h - 33) * sin((m_glSurfaceBase.rotation[0] - 225) * (PI / 180.0f))),
-			m_glSurfaceBase.rotation[0]);
+			m_fPosX + ((m_glSurfaceBase.w - 35) * cos((m_glSurfaceBase.rotation - 225) * (PI / 180.0f))),
+			m_fPosY + ((m_glSurfaceBase.h - 33) * sin((m_glSurfaceBase.rotation - 225) * (PI / 180.0f))),
+			m_glSurfaceBase.rotation);
 		
 		iDistanceTraveled = 0;
 	}
 	m_oTreadMarks.Handle();
+}
+
+void Tank::Update()
+{
+	// Virtual, Do Nothing...
 }
 
 void Tank::Move()
@@ -55,30 +63,30 @@ void Tank::Move()
 
 	if (m_bForwardFlag)
 	{
-		m_fPosX += (m_fVelX * ((float)m_oTime.GetTime() / 1000)) * cos(m_glSurfaceBase.rotation[0] * (PI / 180.0f));
+		m_fPosX += (m_fVelX * ((float)m_oTime.GetTime() / 1000)) * cos((m_glSurfaceBase.rotation - 90) * (PI / 180.0f));
 		
-		m_fPosY += (m_fVelX * ((float)m_oTime.GetTime() / 1000)) * sin(m_glSurfaceBase.rotation[0] * (PI / 180.0f));
+		m_fPosY += (m_fVelX * ((float)m_oTime.GetTime() / 1000)) * sin((m_glSurfaceBase.rotation - 90) * (PI / 180.0f));
 		
 	}
 	if (m_bReverseFlag)
 	{
-		m_fPosX -= (m_fVelX * ((float)m_oTime.GetTime() / 1000)) * cos(m_glSurfaceBase.rotation[0] * (PI / 180.0f));
-		m_fPosY -= (m_fVelX * ((float)m_oTime.GetTime() / 1000)) * sin(m_glSurfaceBase.rotation[0] * (PI / 180.0f));
+		m_fPosX -= (m_fVelX * ((float)m_oTime.GetTime() / 1000)) * cos((m_glSurfaceBase.rotation - 90) * (PI / 180.0f));
+		m_fPosY -= (m_fVelX * ((float)m_oTime.GetTime() / 1000)) * sin((m_glSurfaceBase.rotation - 90) * (PI / 180.0f));
 	}
 
 	if (m_bRightFlag)
 	{
-		m_glSurfaceBase.rotation[0] += m_fVelR * ((float)m_oTime.GetTime() / 1000);
+		m_glSurfaceBase.rotation += m_fVelR * ((float)m_oTime.GetTime() / 1000);
 
-		if (m_glSurfaceBase.rotation[0] > 360)
-			m_glSurfaceBase.rotation[0] = 0;
+		if (m_glSurfaceBase.rotation > 360)
+			m_glSurfaceBase.rotation = 0;
 	}
 	if (m_bLeftFlag)
 	{
-		m_glSurfaceBase.rotation[0] -= m_fVelR * ((float)m_oTime.GetTime() / 1000);
+		m_glSurfaceBase.rotation -= m_fVelR * ((float)m_oTime.GetTime() / 1000);
 
-		if (m_glSurfaceBase.rotation[0] < 0)
-			m_glSurfaceBase.rotation[0] = 360;
+		if (m_glSurfaceBase.rotation < 0)
+			m_glSurfaceBase.rotation = 360;
 	}
 }
 void Tank::Collision()
@@ -90,15 +98,8 @@ void Tank::Draw()
 {
 	m_oTreadMarks.Draw();
 
-	Graphics::DrawSurface(
-		m_glSurfaceBase, 
-		m_fPosX, 
-		m_fPosY);
-
-	Graphics::DrawSurface(
-		m_glSurfaceTurret, 
-		m_fPosX, 
-		m_fPosY);
+	Graphics::DrawSurface(m_glSurfaceBase, m_fPosX, m_fPosY);
+	Graphics::DrawSurface(m_glSurfaceTurret, m_fPosX, m_fPosY);
 }
 
 Tank::Tank()

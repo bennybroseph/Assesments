@@ -33,6 +33,14 @@ namespace LoopHandle
 		}
 	}
 
+	void MainLoop::OnMouseMove(
+		int a_iMouseX, int a_iMouseY, 
+		int a_iVelX, int a_iVelY, 
+		bool a_bLeft, bool a_bRight, bool a_bMiddle)
+	{
+		m_oPlayer.OnMouseMove(a_iMouseX, a_iMouseY, a_iVelX, a_iVelY, a_bLeft, a_bRight, a_bMiddle);
+	}
+
 	MainLoop::MainLoop()
 	{
 		m_glSurfaceBack = Graphics::LoadSurface("Images/background.png");

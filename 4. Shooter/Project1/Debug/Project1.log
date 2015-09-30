@@ -1,9 +1,3 @@
-﻿Build started 9/29/2015 6:51:27 PM.
-     1>Project "C:\Users\Womb-Raider\Documents\GitHub\Assesments\4. Shooter\Project1\Project1.vcxproj" on node 2 (Build target(s)).
-     1>Link:
-         Project1.vcxproj -> C:\Users\Womb-Raider\Documents\GitHub\Assesments\4. Shooter\Debug\Project1.exe
-     1>Done Building Project "C:\Users\Womb-Raider\Documents\GitHub\Assesments\4. Shooter\Project1\Project1.vcxproj" (Build target(s)).
-
-Build succeeded.
-
-Time Elapsed 00:00:00.06
+﻿  Player.cpp
+c:\users\benjamin.odom\documents\github\assesments\4. shooter\project1\player.cpp(6): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  Project1.vcxproj -> C:\Users\benjamin.odom\Documents\GitHub\Assesments\4. Shooter\Debug\Project1.exe

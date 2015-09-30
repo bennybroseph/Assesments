@@ -24,6 +24,7 @@ protected:
 
 public:
 	void Handle();
+	virtual void Update(); // If the tank needs to update anything specific to it's type 
 
 	void Move();
 	void Collision();

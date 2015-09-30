@@ -132,6 +132,7 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Tank.cpp" />
     <ClCompile Include="Text.cpp" />
+    <ClCompile Include="TileMap.cpp" />
     <ClCompile Include="Time.cpp" />
     <ClCompile Include="TreadMarks.cpp" />
   </ItemGroup>
@@ -146,6 +147,7 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="Tank.h" />
     <ClInclude Include="Text.h" />
+    <ClInclude Include="TileMap.h" />
     <ClInclude Include="Time.h" />
     <ClInclude Include="TreadMarks.h" />
   </ItemGroup>

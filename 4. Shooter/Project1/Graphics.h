@@ -14,11 +14,17 @@
 
 struct GLSurface
 {
-	GLuint Surface;
-	int w, h;
-	float rotation[3] = { 0, 0, 0 };
+	GLuint Surface = NULL;
 
-	float color[4] = { 1.0f, 1.0f, 1.0f, 1.0f };
+	int w = NULL, h = NULL;
+
+	float centerX = NULL, centerY = NULL;
+	float rotation = NULL;
+
+	float red = 255, green = 255, blue = 255, alpha = 255;
+
+	float offsetX = NULL, offsetY = NULL;
+	float offsetW = NULL, offsetH = NULL;
 };
 
 namespace Graphics
@@ -30,11 +36,6 @@ namespace Graphics
 
 	void UpdateWindowName(const char *szBuffer);
 	void DrawSurface(const GLSurface &ac_glSurface, const float ac_fPosX, const float ac_fPosY);
-	void DrawSurface(
-		const GLSurface &ac_glSurface,
-		const float ac_fPosX, const float ac_fPosY,
-		const float ac_fOffsetX, const float ac_fOffsetY,
-		const float ac_fWidth, const float ac_fHeight);
 
 	void Resize(const float ac_fScale = 3, const bool ac_bFullScreen = false);
 	void ToggleFullScreen();

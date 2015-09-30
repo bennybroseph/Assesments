@@ -79,7 +79,7 @@ namespace Graphics
 
 	GLSurface LoadSurface(const std::string ac_sFilename)
 	{
-		SDL_Surface* sdlSurface;		
+		SDL_Surface* sdlSurface;
 
 		sdlSurface = IMG_Load(ac_sFilename.c_str());
 		if (sdlSurface == NULL)
@@ -89,7 +89,7 @@ namespace Graphics
 			GLSurface glSurface;
 			return glSurface;
 		}
-	
+
 		return LoadSurface(sdlSurface);
 	}
 	GLSurface LoadSurface(SDL_Surface *a_psdlSurface)
@@ -102,8 +102,14 @@ namespace Graphics
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, a_psdlSurface->w, a_psdlSurface->h, 0, GL_RGBA, GL_UNSIGNED_BYTE, a_psdlSurface->pixels);
 
-		glSurface.h = a_psdlSurface->h;
 		glSurface.w = a_psdlSurface->w;
+		glSurface.h = a_psdlSurface->h;
+
+		glSurface.centerX = glSurface.w / 2.0f;
+		glSurface.centerY = glSurface.h / 2.0f;
+
+		glSurface.offsetW = glSurface.w;
+		glSurface.offsetH = glSurface.h;
 
 		SDL_FreeSurface(a_psdlSurface);
 
@@ -112,41 +118,54 @@ namespace Graphics
 
 	void DrawSurface(const GLSurface &ac_glSurface, const float ac_fPosX, const float ac_fPosY)
 	{
-		DrawSurface(ac_glSurface, ac_fPosX, ac_fPosY, 0.0f, 0.0f, ac_glSurface.w, ac_glSurface.h);
-	}
-	void DrawSurface(
-		const GLSurface &ac_glSurface,
-		const float ac_fPosX, const float ac_fPosY,
-		const float ac_fOffsetX, const float ac_fOffsetY,
-		const float ac_fWidth, const float ac_fHeight)
-	{
 		glPushMatrix(); // Save the current matrix.
 
+		/*float fOffsetRX = (ac_glSurface.centerX >= ac_glSurface.offsetW / 2) ? (ac_glSurface.centerX - (ac_glSurface.offsetW / 2)) : ((ac_glSurface.offsetW / 2) - ac_glSurface.centerX);
+		float fOffsetRY = (ac_glSurface.centerY >= ac_glSurface.offsetH / 2) ? (ac_glSurface.centerY - (ac_glSurface.offsetH / 2)) : ((ac_glSurface.offsetH / 2) - ac_glSurface.centerY);*/
+
 		glTranslatef(ac_fPosX, ac_fPosY, 0.0f);
-		glRotatef(ac_glSurface.rotation[0], 0.0f, 0.0f, 1.0f);
-		glTranslatef(-ac_fPosX, -ac_fPosY, 0.0f);
+		glRotatef(ac_glSurface.rotation, 0.0f, 0.0f, 1.0f);
+		glTranslatef(
+			-ac_fPosX - (ac_glSurface.centerX - ac_glSurface.offsetW/2), 
+			-ac_fPosY - (ac_glSurface.centerY - ac_glSurface.offsetH/2), 0.0f);
 
 		glBindTexture(GL_TEXTURE_2D, ac_glSurface.Surface);
 
 		glBegin(GL_QUADS);
 		{ // Just to make the code look nicer. Unnecessary
-			glColor4f(ac_glSurface.color[0], ac_glSurface.color[1], ac_glSurface.color[2], ac_glSurface.color[3]);
+			glColor4ub(ac_glSurface.red, ac_glSurface.green, ac_glSurface.blue, ac_glSurface.alpha);
 
 			// Bottom-left vertex (corner)
-			glTexCoord2f(ac_fOffsetX / ac_glSurface.w, ac_fOffsetY / ac_glSurface.h); // Position on texture to begin interpolation
-			glVertex2f(round(ac_fPosX - (ac_fWidth / 2)), round(ac_fPosY - (ac_fHeight / 2))); // Vertex Coords
+			glTexCoord2f(
+				ac_glSurface.offsetX / ac_glSurface.w,
+				ac_glSurface.offsetY / ac_glSurface.h); // Position on texture to begin interpolation
+			glVertex2f(
+				round(ac_fPosX - (ac_glSurface.offsetW / 2)),
+				round(ac_fPosY - (ac_glSurface.offsetH / 2))); // Vertex Coords
 
 			// Bottom-right vertex (corner)
-			glTexCoord2f((ac_fOffsetX / ac_glSurface.w) + (ac_fWidth / ac_glSurface.w), ac_fOffsetY / ac_glSurface.h);
-			glVertex2f(round(ac_fPosX + (ac_fWidth / 2)), round(ac_fPosY - (ac_fHeight / 2)));
+			glTexCoord2f(
+				(ac_glSurface.offsetX / ac_glSurface.w) + (ac_glSurface.offsetW / ac_glSurface.w),
+				ac_glSurface.offsetY / ac_glSurface.h);
+			glVertex2f(
+				round(ac_fPosX + (ac_glSurface.offsetW / 2)),
+				round(ac_fPosY - (ac_glSurface.offsetH / 2)));
 
 			// Top-right vertex (corner)
-			glTexCoord2f((ac_fOffsetX / ac_glSurface.w) + (ac_fWidth / ac_glSurface.w), (ac_fOffsetY / ac_glSurface.h) + (ac_fHeight / ac_glSurface.h));
-			glVertex2f(round(ac_fPosX + (ac_fWidth / 2)), round(ac_fPosY + (ac_fHeight / 2)));
+			glTexCoord2f(
+				(ac_glSurface.offsetX / ac_glSurface.w) + (ac_glSurface.offsetW / ac_glSurface.w),
+				(ac_glSurface.offsetY / ac_glSurface.h) + (ac_glSurface.offsetH / ac_glSurface.h));
+			glVertex2f(
+				round(ac_fPosX + (ac_glSurface.offsetW / 2)),
+				round(ac_fPosY + (ac_glSurface.offsetH / 2)));
 
 			// Top-left vertex (corner)
-			glTexCoord2f(ac_fOffsetX / ac_glSurface.w, (ac_fOffsetY / ac_glSurface.h) + (ac_fHeight / ac_glSurface.h));
-			glVertex2f(round(ac_fPosX - (ac_fWidth / 2)), round(ac_fPosY + (ac_fHeight / 2)));
+			glTexCoord2f(
+				ac_glSurface.offsetX / ac_glSurface.w,
+				(ac_glSurface.offsetY / ac_glSurface.h) + (ac_glSurface.offsetH / ac_glSurface.h));
+			glVertex2f(
+				round(ac_fPosX - (ac_glSurface.offsetW / 2)),
+				round(ac_fPosY + (ac_glSurface.offsetH / 2)));
 		} // Just to make the code look nicer. Unnecessary
 		glEnd();
 
