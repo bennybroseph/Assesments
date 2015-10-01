@@ -14,16 +14,15 @@ protected:
 
 	bool m_bForwardFlag, m_bReverseFlag, m_bLeftFlag, m_bRightFlag;
 	
-
-	Time m_oTime;
 	TreadMarks m_oTreadMarks;
 
 	GLSurface m_glSurfaceBase, m_glSurfaceTurret;
 
 	int iDistanceTraveled;
+	int iDeltaTime;
 
 public:
-	void Handle();
+	void Handle(const int ac_iDeltaTime);
 	virtual void Update(); // If the tank needs to update anything specific to it's type 
 
 	void Move();

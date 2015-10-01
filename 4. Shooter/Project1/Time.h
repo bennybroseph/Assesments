@@ -16,7 +16,7 @@ public:
 	void Handle();
 
 	void Pause(const int a_iMilliseconds);
-	int GetTime();
+	int DeltaTime();
 
 	Time();
 	~Time();

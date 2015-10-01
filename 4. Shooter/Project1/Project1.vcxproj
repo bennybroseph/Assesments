@@ -134,6 +134,7 @@
     <ClCompile Include="Text.cpp" />
     <ClCompile Include="TileMap.cpp" />
     <ClCompile Include="Time.cpp" />
+    <ClCompile Include="TimerHandle.cpp" />
     <ClCompile Include="TreadMarks.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -149,6 +150,7 @@
     <ClInclude Include="Text.h" />
     <ClInclude Include="TileMap.h" />
     <ClInclude Include="Time.h" />
+    <ClInclude Include="TimerHandle.h" />
     <ClInclude Include="TreadMarks.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

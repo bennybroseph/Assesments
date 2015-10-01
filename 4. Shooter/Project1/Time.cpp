@@ -25,7 +25,7 @@ void Time::Pause(const int ac_iMilliseconds)
 {
 	m_iWait = ac_iMilliseconds;
 }
-int Time::GetTime()
+int Time::DeltaTime()
 {
 	return m_iCurrentTime - m_iOldTime;
 }

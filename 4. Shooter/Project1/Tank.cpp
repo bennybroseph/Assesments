@@ -2,9 +2,9 @@
 
 
 
-void Tank::Handle()
+void Tank::Handle(const int ac_iDeltaTime)
 {
-	m_oTime.Handle();
+	iDeltaTime = ac_iDeltaTime;
 
 	Update();
 
@@ -63,27 +63,27 @@ void Tank::Move()
 
 	if (m_bForwardFlag)
 	{
-		m_fPosX += (m_fVelX * ((float)m_oTime.GetTime() / 1000)) * cos((m_glSurfaceBase.rotation - 90) * (PI / 180.0f));
+		m_fPosX += (m_fVelX * ((float)iDeltaTime / 1000)) * cos((m_glSurfaceBase.rotation - 90) * (PI / 180.0f));
 		
-		m_fPosY += (m_fVelX * ((float)m_oTime.GetTime() / 1000)) * sin((m_glSurfaceBase.rotation - 90) * (PI / 180.0f));
+		m_fPosY += (m_fVelX * ((float)iDeltaTime / 1000)) * sin((m_glSurfaceBase.rotation - 90) * (PI / 180.0f));
 		
 	}
 	if (m_bReverseFlag)
 	{
-		m_fPosX -= (m_fVelX * ((float)m_oTime.GetTime() / 1000)) * cos((m_glSurfaceBase.rotation - 90) * (PI / 180.0f));
-		m_fPosY -= (m_fVelX * ((float)m_oTime.GetTime() / 1000)) * sin((m_glSurfaceBase.rotation - 90) * (PI / 180.0f));
+		m_fPosX -= (m_fVelX * ((float)iDeltaTime / 1000)) * cos((m_glSurfaceBase.rotation - 90) * (PI / 180.0f));
+		m_fPosY -= (m_fVelX * ((float)iDeltaTime / 1000)) * sin((m_glSurfaceBase.rotation - 90) * (PI / 180.0f));
 	}
 
 	if (m_bRightFlag)
 	{
-		m_glSurfaceBase.rotation += m_fVelR * ((float)m_oTime.GetTime() / 1000);
+		m_glSurfaceBase.rotation += m_fVelR * ((float)iDeltaTime / 1000);
 
 		if (m_glSurfaceBase.rotation > 360)
 			m_glSurfaceBase.rotation = 0;
 	}
 	if (m_bLeftFlag)
 	{
-		m_glSurfaceBase.rotation -= m_fVelR * ((float)m_oTime.GetTime() / 1000);
+		m_glSurfaceBase.rotation -= m_fVelR * ((float)iDeltaTime / 1000);
 
 		if (m_glSurfaceBase.rotation < 0)
 			m_glSurfaceBase.rotation = 360;

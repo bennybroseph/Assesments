@@ -1,3 +1,5 @@
-﻿  Player.cpp
-c:\users\benjamin.odom\documents\github\assesments\4. shooter\project1\player.cpp(6): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-  Project1.vcxproj -> C:\Users\benjamin.odom\Documents\GitHub\Assesments\4. Shooter\Debug\Project1.exe
+﻿  MainLoop.cpp
+c:\users\benjamin.odom\documents\github\assesments\4. shooter\project1\mainloop.cpp(18): error C3867: 'LoopHandle::MainLoop::Test': non-standard syntax; use '&' to create a pointer to member
+c:\users\benjamin.odom\documents\github\assesments\4. shooter\project1\mainloop.cpp(18): error C2059: syntax error: ')'
+c:\users\benjamin.odom\documents\github\assesments\4. shooter\project1\mainloop.cpp(23): warning C4244: 'argument': conversion from 'const unsigned int' to 'const float', possible loss of data
+c:\users\benjamin.odom\documents\github\assesments\4. shooter\project1\mainloop.cpp(62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data

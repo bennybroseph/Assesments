@@ -67,7 +67,7 @@ namespace FPS
 	}
 	void PrintFPS()
 	{
-		Text::Print(Text::PokemonNormal, 10, 25, false, fCurrentFPS);
+		Text::Print(Text::PokemonNormal, 10, 18, false, fCurrentFPS);
 	}
 
 	void Quit()

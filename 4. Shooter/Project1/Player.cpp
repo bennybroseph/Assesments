@@ -3,7 +3,8 @@
 
 void Player::Update()
 {
-	m_glSurfaceTurret.rotation = 180 - (atan2(float(m_iMouseX - m_fPosX), float(m_iMouseY - m_fPosY)) * (180.0f / PI));
+	if (iDeltaTime > 0)
+		m_glSurfaceTurret.rotation = 180 - (atan2(float(m_iMouseX - m_fPosX), float(m_iMouseY - m_fPosY)) * (180.0f / PI));
 }
 
 void Player::OnKeyDown(SDL_Keycode a_eSym, Uint16 mod, SDL_Scancode scancode)
@@ -48,7 +49,7 @@ Player::Player()
 	m_glSurfaceTurret.centerY = 45;
 
 	m_fPosX = 200;
-	m_fPosY = 500;
+	m_fPosY = 300;
 
 	m_fVelX = 150;
 	m_fVelY = 150;

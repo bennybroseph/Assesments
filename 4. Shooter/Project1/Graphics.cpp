@@ -9,7 +9,8 @@ namespace Graphics
 	SDL_GLContext glContext;
 
 	int iResolutionW, iResolutionH;
-	int iWinWidth, iWinHeight, iWinScale;
+	int iWinWidth, iWinHeight;
+	float fWinScale;
 
 	bool bFullScreen;
 
@@ -49,7 +50,7 @@ namespace Graphics
 
 		iWinWidth = (bFullScreen) ? sdlMode.w : iResolutionW*ac_fScale;
 		iWinHeight = (bFullScreen) ? sdlMode.h : iResolutionH*ac_fScale;
-		iWinScale = ac_fScale;
+		fWinScale = ac_fScale;
 
 		int iViewportW = iWinHeight * (float(iResolutionW) / float(iResolutionH));
 		int iViewportOffset = (iWinWidth / 2) - (iViewportW / 2);
@@ -126,8 +127,8 @@ namespace Graphics
 		glTranslatef(ac_fPosX, ac_fPosY, 0.0f);
 		glRotatef(ac_glSurface.rotation, 0.0f, 0.0f, 1.0f);
 		glTranslatef(
-			-ac_fPosX - (ac_glSurface.centerX - ac_glSurface.offsetW/2), 
-			-ac_fPosY - (ac_glSurface.centerY - ac_glSurface.offsetH/2), 0.0f);
+			round(-ac_fPosX - (ac_glSurface.centerX - ac_glSurface.offsetW / 2)),
+			round(-ac_fPosY - (ac_glSurface.centerY - ac_glSurface.offsetH / 2)), 0.0f);
 
 		glBindTexture(GL_TEXTURE_2D, ac_glSurface.Surface);
 
@@ -188,7 +189,7 @@ namespace Graphics
 
 		iWinWidth = (bFullScreen) ? sdlMode.w : iResolutionW*ac_fScale;
 		iWinHeight = (bFullScreen) ? sdlMode.h : iResolutionH*ac_fScale;
-		iWinScale = ac_fScale;
+		fWinScale = ac_fScale;
 
 		int iViewportW = iWinHeight * (float(iResolutionW) / float(iResolutionH));
 		int iViewportOffset = (iWinWidth / 2) - (iViewportW / 2);
@@ -205,7 +206,12 @@ namespace Graphics
 	}
 	void ToggleFullScreen()
 	{
-		Resize(iWinScale, !bFullScreen);
+		Resize(fWinScale, !bFullScreen);
+	}
+
+	const float GetScale()
+	{
+		return float(iWinWidth) / float(iResolutionW);
 	}
 
 	void Draw_Rect(

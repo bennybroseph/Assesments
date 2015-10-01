@@ -40,6 +40,8 @@ namespace Graphics
 	void Resize(const float ac_fScale = 3, const bool ac_bFullScreen = false);
 	void ToggleFullScreen();
 
+	const float GetScale();
+
 	//Draws the given rectangle in the given color
 	void Draw_Rect(
 		const float ac_fPosX, const float ac_fPosY,
