@@ -17,6 +17,8 @@ public:
 		int a_iMouseX, int a_iMouseY, 
 		int a_iVelX, int a_iVelY, 
 		bool a_bLeft, bool a_bRight, bool a_bMiddle);
+
+	Player(TimerHandle<TreadMarks::Tread> &a_oTreadTimer);
 	Player();
 	~Player();
 };

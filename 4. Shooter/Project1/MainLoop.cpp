@@ -3,26 +3,24 @@
 const unsigned int CENTER_OF_SCREEN_WIDTH = 960;
 const unsigned int CENTER_OF_SCREEN_HEIGHT = 540;
 
+const float LARGER_SCALE = 1.35f;
+
 namespace LoopHandle
 {
-	void MainLoop::Test()
-	{
-		printf("IT WORKS");
-	}
-
 	void MainLoop::Handle()
 	{
 		m_oGameTime.Handle();
-		m_oPlayer.Handle(m_oGameTime.DeltaTime());
+		
 
-		m_oGameTimers.NewTimer(1000, m_oPlayer.Draw);
+		m_oPlayer.Handle(m_oGameTime.DeltaTime());
 	}
 	
 	void MainLoop::Draw()
 	{
 		Graphics::DrawSurface(m_glSurfaceBack, CENTER_OF_SCREEN_WIDTH, CENTER_OF_SCREEN_HEIGHT);
-
 		m_oTileMap.Draw();
+
+		m_oTreadTimer.Update(m_oGameTime.DeltaTime());
 		m_oPlayer.Draw();
 	}
 
@@ -33,7 +31,7 @@ namespace LoopHandle
 		case SDLK_ESCAPE: running = false; break;
 
 		case SDLK_F1: Graphics::Resize(1, false); break;
-		case SDLK_F2: Graphics::Resize(1.35f, false); break;
+		case SDLK_F2: Graphics::Resize(LARGER_SCALE, false); break;
 		case SDLK_F11: Graphics::ToggleFullScreen(); break;
 
 		case SDLK_F10: 
@@ -67,6 +65,8 @@ namespace LoopHandle
 		m_glSurfaceBack = Graphics::LoadSurface("Images/background.png");
 
 		m_oTileMap = TileMap("TileMap/OriginalMap.txt", "Images/Environment/environment.png");
+
+		m_oPlayer = Player(m_oTreadTimer);
 	}
 	MainLoop::~MainLoop()
 	{

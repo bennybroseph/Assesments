@@ -1,54 +1,57 @@
 #include "TreadMarks.h"
 
 
-void TreadMarks::Handle()
-{
-	std::list<Tread>::iterator iter = m_loTreads.begin();
-	while(iter != m_loTreads.end())
-	{
-		iter->glSurfaceTread.alpha -= 2;
-
-		if (m_loTreads.begin()->glSurfaceTread.alpha <= 0)
-		{
-			++iter;
-			m_loTreads.pop_front();
-		}
-		else
-			++iter;
-	}
-}
-
-void TreadMarks::Draw()
-{
-	for (
-		std::list<Tread>::iterator iter = m_loTreads.begin();
-		iter != m_loTreads.end();
-		++iter)
-	{
-		Graphics::DrawSurface(iter->glSurfaceTread, iter->fPosX, iter->fPosY);
-	}
-}
 
 void TreadMarks::New(const float ac_fPosX, const float ac_fPosY, const float ac_fAngle)
 {
-	Tread oTemp;
+	Tread *newTread = new Tread;
 
-	oTemp.fPosX = ac_fPosX;
-	oTemp.fPosY = ac_fPosY;
+	newTread->m_fPosX = ac_fPosX;
+	newTread->m_fPosY = ac_fPosY;
 
-	oTemp.glSurfaceTread.alpha = 1.0f;
+	newTread->m_glSurfaceTread.alpha = 1.0f;
 
-	oTemp.glSurfaceTread = m_glSurfaceTread;
-	oTemp.glSurfaceTread.rotation = ac_fAngle;
+	newTread->m_glSurfaceTread = m_glSurfaceTread;
+	newTread->m_glSurfaceTread.rotation = ac_fAngle;
 
-	m_loTreads.push_back(oTemp);
+	m_oTreadTimer->NewTimer(1500, *newTread, &Tread::Delete, &Tread::Update);
 }
 
-TreadMarks::TreadMarks()
+TreadMarks::TreadMarks(TimerHandle<Tread> &ac_oTreadTimer)
 {
 	m_glSurfaceTread = Graphics::LoadSurface("Images/Tanks/tracksSingle.png");
+
+	m_oTreadTimer = &ac_oTreadTimer;
+}
+TreadMarks::TreadMarks()
+{
+
 }
 TreadMarks::~TreadMarks()
 {
 
+}
+
+void TreadMarks::Tread::Update(const int ac_iDeltaTime)
+{
+	m_glSurfaceTread.alpha -= 255.0f/(1500.0f/ac_iDeltaTime);
+	Draw();
+}
+void TreadMarks::Tread::Draw()
+{
+	Graphics::DrawSurface(m_glSurfaceTread, m_fPosX, m_fPosY);
+}
+
+void TreadMarks::Tread::Delete()
+{	
+	delete this;
+}
+
+TreadMarks::Tread::Tread()
+{
+
+}
+TreadMarks::Tread::~Tread()
+{
+	
 }

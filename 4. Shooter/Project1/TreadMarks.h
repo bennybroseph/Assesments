@@ -2,30 +2,38 @@
 #define _TREADMARKS_H_
 
 #include "Graphics.h"
+#include "TimerHandle.h"
 
 #include <list>
 
 class TreadMarks
 {
-private:
-
-	struct Tread
+public:
+	class Tread
 	{
-		float fPosX, fPosY;
+	public:
+		float m_fPosX, m_fPosY;
 
-		GLSurface glSurfaceTread;
-	};	
+		GLSurface m_glSurfaceTread;
 
-	std::list<Tread> m_loTreads;
+		void Update(const int ac_iDeltaTime);
+		void Draw();
+
+		void Delete();
+
+		Tread();
+		~Tread();
+	};
+
+private:
+	TimerHandle<Tread> *m_oTreadTimer;
+
 	GLSurface m_glSurfaceTread;
 
 public:
-	void Handle();
-
-	void Draw();
-
 	void New(const float ac_fPosX, const float ac_fPosY, const float ac_fAngle);
 
+	TreadMarks(TimerHandle<Tread> &ac_oTreadTimer);
 	TreadMarks();
 	~TreadMarks();
 };

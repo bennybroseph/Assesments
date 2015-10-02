@@ -55,6 +55,12 @@
     <Filter Include="Source Files\Classes\Tank\TreadMarks">
       <UniqueIdentifier>{d02f9745-9bd1-480f-b5ba-eb90613aa6aa}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Classes\TimerHandle">
+      <UniqueIdentifier>{2ca74e5e-6b29-4bbe-a0ca-8f78d882a132}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Classes\TileMap">
+      <UniqueIdentifier>{995e4f4b-1387-474f-baf3-11c5c13b2d2f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -97,9 +103,9 @@
       <Filter>Source Files\Classes\Tank\TreadMarks</Filter>
     </ClCompile>
     <ClCompile Include="TileMap.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Classes\TileMap</Filter>
     </ClCompile>
-    <ClCompile Include="TimerHandle.cpp">
+    <ClCompile Include="BulletHandle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -140,10 +146,13 @@
     <ClInclude Include="TreadMarks.h">
       <Filter>Source Files\Classes\Tank\TreadMarks</Filter>
     </ClInclude>
-    <ClInclude Include="TileMap.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="TimerHandle.h">
+      <Filter>Source Files\Classes\TimerHandle</Filter>
+    </ClInclude>
+    <ClInclude Include="TileMap.h">
+      <Filter>Source Files\Classes\TileMap</Filter>
+    </ClInclude>
+    <ClInclude Include="BulletHandle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

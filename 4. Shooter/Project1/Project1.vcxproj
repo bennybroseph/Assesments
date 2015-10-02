@@ -121,6 +121,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BulletHandle.cpp" />
     <ClCompile Include="Debug.cpp" />
     <ClCompile Include="EventHandler.cpp" />
     <ClCompile Include="FPS.cpp" />
@@ -134,10 +135,10 @@
     <ClCompile Include="Text.cpp" />
     <ClCompile Include="TileMap.cpp" />
     <ClCompile Include="Time.cpp" />
-    <ClCompile Include="TimerHandle.cpp" />
     <ClCompile Include="TreadMarks.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BulletHandle.h" />
     <ClInclude Include="Debug.h" />
     <ClInclude Include="EventHandler.h" />
     <ClInclude Include="FPS.h" />

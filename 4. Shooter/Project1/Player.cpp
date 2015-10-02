@@ -3,7 +3,7 @@
 
 void Player::Update()
 {
-	if (iDeltaTime > 0)
+	if (m_iDeltaTime > 0)
 		m_glSurfaceTurret.rotation = 180 - (atan2(float(m_iMouseX - m_fPosX), float(m_iMouseY - m_fPosY)) * (180.0f / PI));
 }
 
@@ -16,6 +16,8 @@ void Player::OnKeyDown(SDL_Keycode a_eSym, Uint16 mod, SDL_Scancode scancode)
 	case SDLK_s: m_bReverseFlag = true; break;
 	case SDLK_d: m_bRightFlag = true; break;
 
+	case SDLK_SPACE: m_bShoot = true; break;
+
 	default: break;
 	}
 }
@@ -27,6 +29,8 @@ void Player::OnKeyUp(SDL_Keycode a_eSym, Uint16 a_eMod, SDL_Scancode m_eScancode
 	case SDLK_a: m_bLeftFlag = false; break;
 	case SDLK_s: m_bReverseFlag = false; break;
 	case SDLK_d: m_bRightFlag = false; break;
+
+	case SDLK_SPACE: m_bShoot = false; break;
 
 	default: break;
 	}
@@ -41,7 +45,7 @@ void Player::OnMouseMove(
 	m_iMouseY = a_iMouseY;
 }
 
-Player::Player()
+Player::Player(TimerHandle<TreadMarks::Tread> &a_oTreadTimer) : Tank(a_oTreadTimer)
 {
 	m_glSurfaceBase = Graphics::LoadSurface("Images/Tanks/tankGreen.png");
 	m_glSurfaceTurret = Graphics::LoadSurface("Images/Tanks/barrelGreen.png");
@@ -59,7 +63,10 @@ Player::Player()
 	m_iMouseX = NULL;
 	m_iMouseY = NULL;
 }
-
+Player::Player() : Tank()
+{
+	
+}
 Player::~Player()
 {
 }

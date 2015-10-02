@@ -1,16 +1,30 @@
 #include "Tank.h"
 
-
+const unsigned int ONE_SECOND = 1000;
+const unsigned int TREAD_CREATION_TIME = 100;
+const unsigned int BULLET_CREATION_TIME = 600;
 
 void Tank::Handle(const int ac_iDeltaTime)
 {
-	iDeltaTime = ac_iDeltaTime;
+	m_iDeltaTime = ac_iDeltaTime;
 
 	Update();
 
-	Move();
+	CheckFlags();
+	if (m_iTimeFiring > BULLET_CREATION_TIME && m_bShoot)
+	{
+		m_oBulletHandle.New(
+			m_fPosX + (30 * cos((m_glSurfaceTurret.rotation - 90) * (PI / 180.0f))),
+			m_fPosY + (30 * sin((m_glSurfaceTurret.rotation - 90) * (PI / 180.0f))),
+			m_glSurfaceTurret.rotation);
+
+		m_iTimeFiring = 0;
+	}
+	m_oBulletHandle.Handle(ac_iDeltaTime);
+
 	Collision();
-	if (iDistanceTraveled > 8)
+
+	if (m_iTimeTraveled > TREAD_CREATION_TIME)
 	{
 		//at some point we will meet a condition where we need
 		//to spawn a treadmark
@@ -45,10 +59,9 @@ void Tank::Handle(const int ac_iDeltaTime)
 			m_fPosX + ((m_glSurfaceBase.w - 35) * cos((m_glSurfaceBase.rotation - 225) * (PI / 180.0f))),
 			m_fPosY + ((m_glSurfaceBase.h - 33) * sin((m_glSurfaceBase.rotation - 225) * (PI / 180.0f))),
 			m_glSurfaceBase.rotation);
-		
-		iDistanceTraveled = 0;
+
+		m_iTimeTraveled = 0;
 	}
-	m_oTreadMarks.Handle();
 }
 
 void Tank::Update()
@@ -56,61 +69,87 @@ void Tank::Update()
 	// Virtual, Do Nothing...
 }
 
-void Tank::Move()
+void Tank::CheckFlags()
 {
 	if (m_bForwardFlag || m_bReverseFlag)
-		++iDistanceTraveled;
+		m_iTimeTraveled += m_iDeltaTime;
 
 	if (m_bForwardFlag)
 	{
-		m_fPosX += (m_fVelX * ((float)iDeltaTime / 1000)) * cos((m_glSurfaceBase.rotation - 90) * (PI / 180.0f));
-		
-		m_fPosY += (m_fVelX * ((float)iDeltaTime / 1000)) * sin((m_glSurfaceBase.rotation - 90) * (PI / 180.0f));
-		
+		m_fPosX += (m_fVelX * ((float)m_iDeltaTime / ONE_SECOND)) * cos((m_glSurfaceBase.rotation - 90) * (PI / 180.0f));
+
+		m_fPosY += (m_fVelX * ((float)m_iDeltaTime / ONE_SECOND)) * sin((m_glSurfaceBase.rotation - 90) * (PI / 180.0f));
+
 	}
 	if (m_bReverseFlag)
 	{
-		m_fPosX -= (m_fVelX * ((float)iDeltaTime / 1000)) * cos((m_glSurfaceBase.rotation - 90) * (PI / 180.0f));
-		m_fPosY -= (m_fVelX * ((float)iDeltaTime / 1000)) * sin((m_glSurfaceBase.rotation - 90) * (PI / 180.0f));
+		m_fPosX -= (m_fVelX * ((float)m_iDeltaTime / ONE_SECOND)) * cos((m_glSurfaceBase.rotation - 90) * (PI / 180.0f));
+		m_fPosY -= (m_fVelX * ((float)m_iDeltaTime / ONE_SECOND)) * sin((m_glSurfaceBase.rotation - 90) * (PI / 180.0f));
 	}
 
 	if (m_bRightFlag)
 	{
-		m_glSurfaceBase.rotation += m_fVelR * ((float)iDeltaTime / 1000);
+		m_glSurfaceBase.rotation += m_fVelR * ((float)m_iDeltaTime / ONE_SECOND);
 
 		if (m_glSurfaceBase.rotation > 360)
 			m_glSurfaceBase.rotation = 0;
 	}
 	if (m_bLeftFlag)
 	{
-		m_glSurfaceBase.rotation -= m_fVelR * ((float)iDeltaTime / 1000);
+		m_glSurfaceBase.rotation -= m_fVelR * ((float)m_iDeltaTime / ONE_SECOND);
 
 		if (m_glSurfaceBase.rotation < 0)
 			m_glSurfaceBase.rotation = 360;
 	}
+
+	m_iTimeFiring += m_iDeltaTime;
 }
 void Tank::Collision()
 {
+	if (m_fPosX < m_glSurfaceBase.w / 2)
+		m_fPosX = m_glSurfaceBase.w / 2;
+	if (m_fPosX > 1280 - m_glSurfaceBase.w / 2)
+		m_fPosX = 1280 - m_glSurfaceBase.w / 2;
 
+	if (m_fPosY < m_glSurfaceBase.h / 2)
+		m_fPosY = m_glSurfaceBase.h / 2;
+	if (m_fPosY > 720 - m_glSurfaceBase.h / 2)
+		m_fPosY = 720 - m_glSurfaceBase.h / 2;
 }
 
 void Tank::Draw()
 {
-	m_oTreadMarks.Draw();
-
 	Graphics::DrawSurface(m_glSurfaceBase, m_fPosX, m_fPosY);
+
+	m_oBulletHandle.Draw();
+
 	Graphics::DrawSurface(m_glSurfaceTurret, m_fPosX, m_fPosY);
+
+	
 }
 
-Tank::Tank()
+Tank::Tank(TimerHandle<TreadMarks::Tread> &a_oTreadTimer)
 {
+	printf("New Tank constructed\n");
+
 	m_bForwardFlag = false;
 	m_bReverseFlag = false;
 
 	m_bLeftFlag = false;
 	m_bRightFlag = false;
 
-	iDistanceTraveled = 0;
+	m_bShoot = false;
+
+	m_iTimeTraveled = NULL;
+	m_iTimeFiring = BULLET_CREATION_TIME;
+
+	m_iDeltaTime = NULL;	
+
+	m_oTreadMarks = TreadMarks(a_oTreadTimer);
+}
+Tank::Tank()
+{
+	printf("Empty Tank created, be careful...\n");
 }
 Tank::~Tank()
 {

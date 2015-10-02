@@ -13,7 +13,7 @@ namespace LoopHandle
 	private:
 		GLSurface m_glSurfaceBack;
 		
-		TimerHandle m_oGameTimers;
+		TimerHandle<TreadMarks::Tread> m_oTreadTimer;
 		Time m_oGameTime;
 		Player m_oPlayer;
 		TileMap m_oTileMap;
@@ -22,7 +22,6 @@ namespace LoopHandle
 
 	public:
 		void Handle();
-		void Test();
 
 		void Draw();
 
