@@ -2,10 +2,10 @@
 
 const unsigned int ONE_SECOND = 1000;
 
-void BulletHandle::Handle(const int ac_iDeltaTime)
-{
-	m_iDeltaTime = ac_iDeltaTime;
+const unsigned int NULL_REF = NULL;
 
+void BulletHandle::Handle()
+{
 	Move();
 	Collision();
 }
@@ -69,9 +69,13 @@ void BulletHandle::New(const float ac_fPosX, const float ac_fPosY, const float a
 	m_loBullet.push_back(oTemp);
 }
 
-BulletHandle::BulletHandle()
+BulletHandle::BulletHandle(const int &ac_iDeltaTime) : m_iDeltaTime(ac_iDeltaTime)
 {
 	m_glSurfaceBullet = Graphics::LoadSurface("Images/Bullets/bulletGreen.png");
+}
+BulletHandle::BulletHandle() : m_iDeltaTime(NULL_REF)
+{
+
 }
 BulletHandle::~BulletHandle()
 {

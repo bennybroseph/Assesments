@@ -19,10 +19,10 @@ private:
 
 	GLSurface m_glSurfaceBullet;
 
-	int m_iDeltaTime;
+	const int &m_iDeltaTime;
 
 public:
-	void Handle(const int ac_iDeltaTime);
+	void Handle();
 
 	void Move();
 	void Collision();
@@ -31,6 +31,7 @@ public:
 
 	void New(const float ac_fPosX, const float ac_fPosY, const float ac_fAngle);
 
+	BulletHandle(const int &ac_iDeltaTime);
 	BulletHandle();
 	~BulletHandle();
 };

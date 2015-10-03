@@ -17,25 +17,25 @@ protected:
 	bool m_bShoot;
 	
 	TreadMarks m_oTreadMarks;
-	BulletHandle m_oBulletHandle;
+	BulletHandle *m_oBulletHandle;
 
 	GLSurface m_glSurfaceBase, m_glSurfaceTurret;
 
 	int m_iTimeTraveled;
 	int m_iTimeFiring;
 
-	int m_iDeltaTime;
+	const int &m_iDeltaTime;
 
 public:
-	void Handle(const int ac_iDeltaTime);
-	virtual void Update(); // If the tank needs to update anything specific to it's type 
+	void Handle();
+	virtual void Update(); // If the tank needs to update anything specific to it's type, do it here
 
 	void CheckFlags();
 	void Collision();
 
 	void Draw();
 
-	Tank(TimerHandle<TreadMarks::Tread> &a_oTreadTimer);
+	Tank(TimerHandle<TreadMarks::Tread> &a_oTreadTimer, const int &ac_iDeltaTime);
 	Tank();
 	virtual ~Tank();
 	

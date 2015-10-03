@@ -4,23 +4,23 @@ const unsigned int ONE_SECOND = 1000;
 const unsigned int TREAD_CREATION_TIME = 100;
 const unsigned int BULLET_CREATION_TIME = 600;
 
-void Tank::Handle(const int ac_iDeltaTime)
-{
-	m_iDeltaTime = ac_iDeltaTime;
+const unsigned int NULL_REF = NULL;
 
+void Tank::Handle()
+{
 	Update();
 
 	CheckFlags();
 	if (m_iTimeFiring > BULLET_CREATION_TIME && m_bShoot)
 	{
-		m_oBulletHandle.New(
+		m_oBulletHandle->New(
 			m_fPosX + (30 * cos((m_glSurfaceTurret.rotation - 90) * (PI / 180.0f))),
 			m_fPosY + (30 * sin((m_glSurfaceTurret.rotation - 90) * (PI / 180.0f))),
 			m_glSurfaceTurret.rotation);
 
 		m_iTimeFiring = 0;
 	}
-	m_oBulletHandle.Handle(ac_iDeltaTime);
+	m_oBulletHandle->Handle();
 
 	Collision();
 
@@ -121,14 +121,14 @@ void Tank::Draw()
 {
 	Graphics::DrawSurface(m_glSurfaceBase, m_fPosX, m_fPosY);
 
-	m_oBulletHandle.Draw();
+	m_oBulletHandle->Draw();
 
 	Graphics::DrawSurface(m_glSurfaceTurret, m_fPosX, m_fPosY);
 
 	
 }
 
-Tank::Tank(TimerHandle<TreadMarks::Tread> &a_oTreadTimer)
+Tank::Tank(TimerHandle<TreadMarks::Tread> &a_oTreadTimer, const int &ac_iDeltaTime) : m_iDeltaTime(ac_iDeltaTime)
 {
 	printf("New Tank constructed\n");
 
@@ -141,17 +141,16 @@ Tank::Tank(TimerHandle<TreadMarks::Tread> &a_oTreadTimer)
 	m_bShoot = false;
 
 	m_iTimeTraveled = NULL;
-	m_iTimeFiring = BULLET_CREATION_TIME;
+	m_iTimeFiring = BULLET_CREATION_TIME;	
 
-	m_iDeltaTime = NULL;	
-
+	m_oBulletHandle = new BulletHandle(ac_iDeltaTime);
 	m_oTreadMarks = TreadMarks(a_oTreadTimer);
 }
-Tank::Tank()
+Tank::Tank() : m_iDeltaTime(NULL_REF)
 {
 	printf("Empty Tank created, be careful...\n");
 }
 Tank::~Tank()
 {
-
+	delete m_oBulletHandle;
 }

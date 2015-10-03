@@ -45,7 +45,7 @@ void Player::OnMouseMove(
 	m_iMouseY = a_iMouseY;
 }
 
-Player::Player(TimerHandle<TreadMarks::Tread> &a_oTreadTimer) : Tank(a_oTreadTimer)
+Player::Player(TimerHandle<TreadMarks::Tread> &a_oTreadTimer, const int &ac_iDeltaTime) : Tank(a_oTreadTimer, ac_iDeltaTime)
 {
 	m_glSurfaceBase = Graphics::LoadSurface("Images/Tanks/tankGreen.png");
 	m_glSurfaceTurret = Graphics::LoadSurface("Images/Tanks/barrelGreen.png");

@@ -19,15 +19,17 @@ void Time::Handle()
 	}
 
 	m_iOldClock = clock();
+
+	m_iDeltaTime = m_iCurrentTime - m_iOldTime;
 }
 
 void Time::Pause(const int ac_iMilliseconds)
 {
 	m_iWait = ac_iMilliseconds;
 }
-int Time::DeltaTime()
+const int &Time::GetDeltaTime()
 {
-	return m_iCurrentTime - m_iOldTime;
+	return m_iDeltaTime;
 }
 
 Time::Time()

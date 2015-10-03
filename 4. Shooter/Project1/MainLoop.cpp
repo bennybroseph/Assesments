@@ -12,7 +12,7 @@ namespace LoopHandle
 		m_oGameTime.Handle();
 		
 
-		m_oPlayer.Handle(m_oGameTime.DeltaTime());
+		m_oPlayer->Handle();
 	}
 	
 	void MainLoop::Draw()
@@ -20,8 +20,8 @@ namespace LoopHandle
 		Graphics::DrawSurface(m_glSurfaceBack, CENTER_OF_SCREEN_WIDTH, CENTER_OF_SCREEN_HEIGHT);
 		m_oTileMap.Draw();
 
-		m_oTreadTimer.Update(m_oGameTime.DeltaTime());
-		m_oPlayer.Draw();
+		m_oTreadTimer->Update();
+		m_oPlayer->Draw();
 	}
 
 	void MainLoop::OnKeyDown(SDL_Keycode a_eSym, Uint16 mod, SDL_Scancode scancode)
@@ -41,14 +41,14 @@ namespace LoopHandle
 		}
 		break;
 
-		default: m_oPlayer.OnKeyDown(a_eSym, mod, scancode); break;
+		default: m_oPlayer->OnKeyDown(a_eSym, mod, scancode); break;
 		}
 	}
 	void MainLoop::OnKeyUp(SDL_Keycode a_eSym, Uint16 a_eMod, SDL_Scancode m_eScancode)
 	{
 		switch (a_eSym)
 		{
-		default: m_oPlayer.OnKeyUp(a_eSym, a_eMod, m_eScancode); break;
+		default: m_oPlayer->OnKeyUp(a_eSym, a_eMod, m_eScancode); break;
 		}
 	}
 
@@ -57,7 +57,7 @@ namespace LoopHandle
 		int a_iVelX, int a_iVelY,
 		bool a_bLeft, bool a_bRight, bool a_bMiddle)
 	{
-		m_oPlayer.OnMouseMove(a_iMouseX/Graphics::GetScale(), a_iMouseY/Graphics::GetScale(), a_iVelX, a_iVelY, a_bLeft, a_bRight, a_bMiddle);
+		m_oPlayer->OnMouseMove(a_iMouseX/Graphics::GetScale(), a_iMouseY/Graphics::GetScale(), a_iVelX, a_iVelY, a_bLeft, a_bRight, a_bMiddle);
 	}
 
 	MainLoop::MainLoop()
@@ -66,10 +66,11 @@ namespace LoopHandle
 
 		m_oTileMap = TileMap("TileMap/OriginalMap.txt", "Images/Environment/environment.png");
 
-		m_oPlayer = Player(m_oTreadTimer);
+		m_oTreadTimer = new TimerHandle<TreadMarks::Tread>(m_oGameTime.GetDeltaTime());
+		m_oPlayer = new Player(*m_oTreadTimer, m_oGameTime.GetDeltaTime());
 	}
 	MainLoop::~MainLoop()
 	{
-
+		delete m_oPlayer;
 	}
 }

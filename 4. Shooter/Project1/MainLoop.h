@@ -4,7 +4,6 @@
 #include "Loop.h"
 #include "Player.h"
 #include "TileMap.h"
-#include "TimerHandle.h"
 
 namespace LoopHandle
 {
@@ -13,9 +12,9 @@ namespace LoopHandle
 	private:
 		GLSurface m_glSurfaceBack;
 		
-		TimerHandle<TreadMarks::Tread> m_oTreadTimer;
+		TimerHandle<TreadMarks::Tread> *m_oTreadTimer;
 		Time m_oGameTime;
-		Player m_oPlayer;
+		Player *m_oPlayer;
 		TileMap m_oTileMap;
 
 		bool m_bIsPaused;
