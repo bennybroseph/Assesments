@@ -15,6 +15,8 @@ protected:
 
 	bool m_bForwardFlag, m_bReverseFlag, m_bLeftFlag, m_bRightFlag;
 	bool m_bShoot;
+
+	int m_iHealth;
 	
 	TreadMarks m_oTreadMarks;
 	BulletHandle *m_oBulletHandle;
@@ -36,7 +38,7 @@ public:
 	void Draw();
 
 	Tank(TimerHandle<TreadMarks::Tread> &a_oTreadTimer, const int &ac_iDeltaTime);
-	Tank();
+	Tank() = delete;
 	virtual ~Tank();
 	
 };

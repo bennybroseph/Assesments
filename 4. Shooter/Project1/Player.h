@@ -10,6 +10,9 @@ private:
 public:
 	void Update();
 
+	const float &GetPosX();
+	const float &GetPosY();
+
 	void OnKeyDown(SDL_Keycode a_eSym, Uint16 a_eMod, SDL_Scancode a_eScancode);
 	void OnKeyUp(SDL_Keycode a_eSym, Uint16 a_eMod, SDL_Scancode a_eScancode);
 
@@ -19,7 +22,7 @@ public:
 		bool a_bLeft, bool a_bRight, bool a_bMiddle);
 
 	Player(TimerHandle<TreadMarks::Tread> &a_oTreadTimer, const int &ac_iDeltaTime);
-	Player();
+	Player() = delete;
 	~Player();
 };
 

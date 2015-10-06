@@ -1,10 +1,20 @@
 #include "Player.h"
 
 
+
 void Player::Update()
 {
 	if (m_iDeltaTime > 0)
 		m_glSurfaceTurret.rotation = 180 - (atan2(float(m_iMouseX - m_fPosX), float(m_iMouseY - m_fPosY)) * (180.0f / PI));
+}
+
+const float &Player::GetPosX()
+{
+	return m_fPosX;
+}
+const float &Player::GetPosY()
+{
+	return m_fPosY;
 }
 
 void Player::OnKeyDown(SDL_Keycode a_eSym, Uint16 mod, SDL_Scancode scancode)
@@ -60,12 +70,12 @@ Player::Player(TimerHandle<TreadMarks::Tread> &a_oTreadTimer, const int &ac_iDel
 
 	m_fVelR = 100;
 
+	m_iHealth = 10;
+
 	m_iMouseX = NULL;
 	m_iMouseY = NULL;
-}
-Player::Player() : Tank()
-{
-	
+
+	m_oBulletHandle = new BulletHandle(ac_iDeltaTime, "Images/Bullets/bulletGreen.png");
 }
 Player::~Player()
 {

@@ -2,8 +2,6 @@
 
 const unsigned int ONE_SECOND = 1000;
 
-const unsigned int NULL_REF = NULL;
-
 void BulletHandle::Handle()
 {
 	Move();
@@ -69,13 +67,9 @@ void BulletHandle::New(const float ac_fPosX, const float ac_fPosY, const float a
 	m_loBullet.push_back(oTemp);
 }
 
-BulletHandle::BulletHandle(const int &ac_iDeltaTime) : m_iDeltaTime(ac_iDeltaTime)
+BulletHandle::BulletHandle(const int &ac_iDeltaTime, const std::string ac_sFilename) : m_iDeltaTime(ac_iDeltaTime)
 {
-	m_glSurfaceBullet = Graphics::LoadSurface("Images/Bullets/bulletGreen.png");
-}
-BulletHandle::BulletHandle() : m_iDeltaTime(NULL_REF)
-{
-
+	m_glSurfaceBullet = Graphics::LoadSurface(ac_sFilename);
 }
 BulletHandle::~BulletHandle()
 {

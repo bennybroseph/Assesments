@@ -1,10 +1,8 @@
 #include "Tank.h"
 
 const unsigned int ONE_SECOND = 1000;
-const unsigned int TREAD_CREATION_TIME = 100;
+const unsigned int TREAD_CREATION_TIME = 120;
 const unsigned int BULLET_CREATION_TIME = 600;
-
-const unsigned int NULL_REF = NULL;
 
 void Tank::Handle()
 {
@@ -92,14 +90,14 @@ void Tank::CheckFlags()
 		m_glSurfaceBase.rotation += m_fVelR * ((float)m_iDeltaTime / ONE_SECOND);
 
 		if (m_glSurfaceBase.rotation > 360)
-			m_glSurfaceBase.rotation = 0;
+			m_glSurfaceBase.rotation = 360 - m_glSurfaceBase.rotation;
 	}
 	if (m_bLeftFlag)
 	{
 		m_glSurfaceBase.rotation -= m_fVelR * ((float)m_iDeltaTime / ONE_SECOND);
 
 		if (m_glSurfaceBase.rotation < 0)
-			m_glSurfaceBase.rotation = 360;
+			m_glSurfaceBase.rotation = 360 + m_glSurfaceBase.rotation;
 	}
 
 	m_iTimeFiring += m_iDeltaTime;
@@ -143,12 +141,7 @@ Tank::Tank(TimerHandle<TreadMarks::Tread> &a_oTreadTimer, const int &ac_iDeltaTi
 	m_iTimeTraveled = NULL;
 	m_iTimeFiring = BULLET_CREATION_TIME;	
 
-	m_oBulletHandle = new BulletHandle(ac_iDeltaTime);
 	m_oTreadMarks = TreadMarks(a_oTreadTimer);
-}
-Tank::Tank() : m_iDeltaTime(NULL_REF)
-{
-	printf("Empty Tank created, be careful...\n");
 }
 Tank::~Tank()
 {

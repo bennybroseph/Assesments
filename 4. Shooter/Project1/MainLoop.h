@@ -3,6 +3,7 @@
 
 #include "Loop.h"
 #include "Player.h"
+#include "Enemy.h"
 #include "TileMap.h"
 
 namespace LoopHandle
@@ -13,8 +14,12 @@ namespace LoopHandle
 		GLSurface m_glSurfaceBack;
 		
 		TimerHandle<TreadMarks::Tread> *m_oTreadTimer;
+		TimerHandle<Enemy> *m_oAITimer;
 		Time m_oGameTime;
+
 		Player *m_oPlayer;
+		std::vector<Enemy*> m_voEnemy;
+
 		TileMap m_oTileMap;
 
 		bool m_bIsPaused;

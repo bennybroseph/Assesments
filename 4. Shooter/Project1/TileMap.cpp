@@ -14,9 +14,9 @@ void TileMap::Draw()
 			{
 				switch (m_voLayer[i][j].iCollumn)
 				{
-				case 0: Graphics::DrawSurface(m_glSurfaceDirt, (j * 128) + 64, ((i+1) * 128) + 64); break;
-				case 1: Graphics::DrawSurface(m_glSurfaceSand, (j * 128) + 64, ((i+1) * 128) + 64); break;
-				case 2: Graphics::DrawSurface(m_glSurfaceGrass, (j * 128) + 64, ((i+1) * 128) + 64); break;
+				case 0: Graphics::DrawSurface(m_glSurfaceDirt, (j * 128) + 64, (i * 128) + 64); break;
+				case 1: Graphics::DrawSurface(m_glSurfaceSand, (j * 128) + 64, (i * 128) + 64); break;
+				case 2: Graphics::DrawSurface(m_glSurfaceGrass, (j * 128) + 64, (i * 128) + 64); break;
 
 				default: break;
 				}
@@ -66,6 +66,10 @@ TileMap::TileMap(const std::string ac_sTileFile, const std::string ac_sImageFile
 	m_glSurfaceDirt.offsetH = 128.0f;
 	m_glSurfaceSand.offsetH = 128.0f;
 	m_glSurfaceGrass.offsetH = 128.0f;
+
+	m_glSurfaceDirt.centerY = 64.0f;
+	m_glSurfaceSand.offsetH = 192.0f;
+	m_glSurfaceGrass.offsetH = 320.0f;
 
 	m_glSurfaceSand.offsetY = 128.0f;
 	m_glSurfaceGrass.offsetY = 256.0f;

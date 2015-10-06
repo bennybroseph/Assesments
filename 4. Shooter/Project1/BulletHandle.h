@@ -31,8 +31,8 @@ public:
 
 	void New(const float ac_fPosX, const float ac_fPosY, const float ac_fAngle);
 
-	BulletHandle(const int &ac_iDeltaTime);
-	BulletHandle();
+	BulletHandle(const int &ac_iDeltaTime, const std::string ac_sFilename);
+	BulletHandle() = delete;
 	~BulletHandle();
 };
 

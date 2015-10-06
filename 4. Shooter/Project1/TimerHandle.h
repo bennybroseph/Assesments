@@ -32,6 +32,7 @@ public:
 	void NewTimer(const int ac_iTimer, T &a_Obj, CallBackFunc a_FuncEnd, UpdateFunc a_FuncUpdate = nullptr);
 
 	TimerHandle(const int &ac_iDeltaTime);
+	TimerHandle() = delete;
 	~TimerHandle();
 };
 

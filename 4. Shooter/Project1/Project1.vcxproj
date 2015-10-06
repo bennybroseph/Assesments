@@ -123,6 +123,7 @@
   <ItemGroup>
     <ClCompile Include="BulletHandle.cpp" />
     <ClCompile Include="Debug.cpp" />
+    <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EventHandler.cpp" />
     <ClCompile Include="FPS.cpp" />
     <ClCompile Include="Graphics.cpp" />
@@ -140,6 +141,7 @@
   <ItemGroup>
     <ClInclude Include="BulletHandle.h" />
     <ClInclude Include="Debug.h" />
+    <ClInclude Include="Enemy.h" />
     <ClInclude Include="EventHandler.h" />
     <ClInclude Include="FPS.h" />
     <ClInclude Include="Graphics.h" />
