@@ -48,12 +48,12 @@ void Tank::Handle()
 		//{ if(this->timer > 0)
 		//draw(treadmarkTexture)
 		//}
-		m_oTreadMarks.New(
+		m_oTreadMarks->New(
 			m_fPosX + ((m_glSurfaceBase.w - 35) * cos((m_glSurfaceBase.rotation + 45) * (PI / 180.0f))),
 			m_fPosY + ((m_glSurfaceBase.h - 33) * sin((m_glSurfaceBase.rotation + 45) * (PI / 180.0f))),
 			m_glSurfaceBase.rotation);
 
-		m_oTreadMarks.New(
+		m_oTreadMarks->New(
 			m_fPosX + ((m_glSurfaceBase.w - 35) * cos((m_glSurfaceBase.rotation - 225) * (PI / 180.0f))),
 			m_fPosY + ((m_glSurfaceBase.h - 33) * sin((m_glSurfaceBase.rotation - 225) * (PI / 180.0f))),
 			m_glSurfaceBase.rotation);
@@ -141,7 +141,7 @@ Tank::Tank(TimerHandle<TreadMarks::Tread> &a_oTreadTimer, const int &ac_iDeltaTi
 	m_iTimeTraveled = NULL;
 	m_iTimeFiring = BULLET_CREATION_TIME;	
 
-	m_oTreadMarks = TreadMarks(a_oTreadTimer);
+	m_oTreadMarks = new TreadMarks(a_oTreadTimer);
 }
 Tank::~Tank()
 {

@@ -18,7 +18,7 @@ protected:
 
 	int m_iHealth;
 	
-	TreadMarks m_oTreadMarks;
+	TreadMarks *m_oTreadMarks;
 	BulletHandle *m_oBulletHandle;
 
 	GLSurface m_glSurfaceBase, m_glSurfaceTurret;
