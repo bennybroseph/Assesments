@@ -1,3 +1,14 @@
+////////////////////////////////////////////////////////////
+// File: MainLoop.h
+// Author: Ben Odom
+// Date Created: 10/01/2015
+// Brief: This file contains the main game loop for the
+//		  shooter. It will handle all calls to update or
+//		  handle functions as well as draw. It will also
+//		  take care of passing user input to the proper
+//		  places
+////////////////////////////////////////////////////////////
+
 #ifndef _MAINLOOP_H_
 #define _MAINLOOP_H_
 

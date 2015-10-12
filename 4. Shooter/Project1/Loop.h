@@ -1,3 +1,11 @@
+////////////////////////////////////////////////////////////
+// File: Loop.h
+// Author: Ben Odom
+// Date Created: 10/01/2015
+// Brief: This file contains the template for all other 
+//		  loops in the project
+////////////////////////////////////////////////////////////
+
 #ifndef LOOP_H_INCLUDED
 #define LOOP_H_INCLUDED
 

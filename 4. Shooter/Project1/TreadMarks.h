@@ -1,3 +1,13 @@
+////////////////////////////////////////////////////////////
+// File: TreadMarks.h
+// Author: Ben Odom
+// Date Created: 10/01/2015
+// Brief: This file contains the necessary functionality 
+//		  for all tank treads. The treads themselves exist 
+//		  independently of a tank and delete independently 
+//		  as well.
+////////////////////////////////////////////////////////////
+
 #ifndef _TREADMARKS_H_
 #define _TREADMARKS_H_
 

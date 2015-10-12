@@ -1,4 +1,15 @@
-#pragma once
+////////////////////////////////////////////////////////////
+// File: Player.h
+// Author: Ben Odom
+// Date Created: 10/01/2015
+// Brief: This file contains all necessary functionality
+//		  for a player tank. It accepts user input, and 
+//		  the turret follows the mouse. Inherits all 
+//		  variables and functions from 'Tank.h'
+////////////////////////////////////////////////////////////
+
+#ifndef _PLAYER_H_
+#define _PLAYER_H_
 
 #include "Tank.h"
 
@@ -36,3 +47,4 @@ public:
 	~Player();
 };
 
+#endif // _PLAYER_H_

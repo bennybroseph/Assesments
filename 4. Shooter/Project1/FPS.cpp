@@ -14,7 +14,7 @@ namespace FPS
 
 	int iFramesCounter; // How many frames have gone by this 1000 milliseconds
 
-	std::list<int> liPreviousFrames; // The past 10 FPS
+	std::list<int> liPreviousFrames; // The past 'MAX_PREV_FPS' FPS
 
 	void Init(const int ac_iMaxFPS)
 	{

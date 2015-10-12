@@ -1,3 +1,14 @@
+////////////////////////////////////////////////////////////
+// File: Tank.h
+// Author: Ben Odom
+// Date Created: 10/01/2015
+// Brief: This file contains a template for all instances
+//		  of a tank. Defines what it means to be a tank, 
+//		  and all functionality related to it. Calls 
+//		  functions in a specific order to maintain
+//		  an organized logic
+////////////////////////////////////////////////////////////
+
 #ifndef _TANK_H_
 #define _TANK_H_
 

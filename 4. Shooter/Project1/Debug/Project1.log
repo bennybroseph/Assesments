@@ -1,2 +1,35 @@
-﻿  TreadMarks.cpp
+﻿  Time.cpp
+  TileMap.cpp
+c:\users\benjamin.odom\documents\github\assesments\4. shooter\project1\tilemap.cpp(17): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
+c:\users\benjamin.odom\documents\github\assesments\4. shooter\project1\tilemap.cpp(18): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
+c:\users\benjamin.odom\documents\github\assesments\4. shooter\project1\tilemap.cpp(19): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
+  Generating Code...
+  Compiling...
+  Enemy.cpp
+c:\users\benjamin.odom\documents\github\assesments\4. shooter\project1\enemy.cpp(7): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  Generating Code...
+  Compiling...
+  TreadMarks.cpp
+  Tank.cpp
+c:\users\benjamin.odom\documents\github\assesments\4. shooter\project1\tank.cpp(17): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+c:\users\benjamin.odom\documents\github\assesments\4. shooter\project1\tank.cpp(54): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+c:\users\benjamin.odom\documents\github\assesments\4. shooter\project1\tank.cpp(59): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+c:\users\benjamin.odom\documents\github\assesments\4. shooter\project1\tank.cpp(77): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+c:\users\benjamin.odom\documents\github\assesments\4. shooter\project1\tank.cpp(79): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+c:\users\benjamin.odom\documents\github\assesments\4. shooter\project1\tank.cpp(84): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+c:\users\benjamin.odom\documents\github\assesments\4. shooter\project1\tank.cpp(85): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+c:\users\benjamin.odom\documents\github\assesments\4. shooter\project1\tank.cpp(108): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\benjamin.odom\documents\github\assesments\4. shooter\project1\tank.cpp(110): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\benjamin.odom\documents\github\assesments\4. shooter\project1\tank.cpp(113): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\benjamin.odom\documents\github\assesments\4. shooter\project1\tank.cpp(115): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  Player.cpp
+c:\users\benjamin.odom\documents\github\assesments\4. shooter\project1\player.cpp(8): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  MainLoop.cpp
+c:\users\benjamin.odom\documents\github\assesments\4. shooter\project1\mainloop.cpp(17): warning C4018: '<': signed/unsigned mismatch
+c:\users\benjamin.odom\documents\github\assesments\4. shooter\project1\mainloop.cpp(23): warning C4244: 'argument': conversion from 'const unsigned int' to 'const float', possible loss of data
+c:\users\benjamin.odom\documents\github\assesments\4. shooter\project1\mainloop.cpp(29): warning C4018: '<': signed/unsigned mismatch
+c:\users\benjamin.odom\documents\github\assesments\4. shooter\project1\mainloop.cpp(70): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  Main.cpp
+  LoopHandle.cpp
+  Generating Code...
   Project1.vcxproj -> C:\Users\benjamin.odom\Documents\GitHub\Assesments\4. Shooter\Debug\Project1.exe

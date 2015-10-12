@@ -1,3 +1,9 @@
+////////////////////////////////////////////////////////////
+// File: MainLoop.cpp
+// Author: Ben Odom
+// Date Created: 10/01/2015
+////////////////////////////////////////////////////////////
+
 #include "MainLoop.h"
 
 const unsigned int CENTER_OF_SCREEN_WIDTH = 960; // The center of the screen's X position

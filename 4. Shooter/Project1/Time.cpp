@@ -1,20 +1,26 @@
+////////////////////////////////////////////////////////////
+// File: Time.cpp
+// Author: Ben Odom
+// Date Created: 10/01/2015
+////////////////////////////////////////////////////////////
+
 #include "Time.h"
 
 
 void Time::Handle()
 {
-	if (!m_iWait && m_iWait != -1000)
+	if (!m_iWait && m_iWait != -1000) // If the current loop time should not be paused
 	{
 		m_iOldTime = m_iCurrentTime;
 		m_iCurrentTime = clock();
 	}
-	else if (m_iWait)
+	else if (m_iWait) // If the current loop time should be paused
 	{
 		m_iCurrentTime = clock();
 		m_iOldTime = clock();
-		if (m_iWait < 0 && m_iWait != -1000)
+		if (m_iWait < 0 && m_iWait != -1000) // If the amount of time to wait has expired
 			m_iWait = 0;
-		else if (m_iWait != -1000)
+		else if (m_iWait != -1000) // As long as the amount of time to wait is not "infinite"
 			m_iWait -= clock() - m_iOldClock;
 	}
 

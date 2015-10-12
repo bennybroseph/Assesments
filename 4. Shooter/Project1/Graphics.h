@@ -1,3 +1,12 @@
+////////////////////////////////////////////////////////////
+// File: Graphics.h
+// Author: Ben Odom
+// Date Created: 10/01/2015
+// Brief: This file contains functionality for initializing 
+//		  an SDL window with an OpenGL context and drawing
+//		  images to that window
+////////////////////////////////////////////////////////////
+
 #ifndef _GRAPHICS_H_
 #define _GRAPHICS_H_
 

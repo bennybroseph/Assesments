@@ -1,3 +1,9 @@
+////////////////////////////////////////////////////////////
+// File: TileMap.cpp
+// Author: Ben Odom
+// Date Created: 10/01/2015
+////////////////////////////////////////////////////////////
+
 #include "TileMap.h"
 
 
@@ -10,13 +16,13 @@ void TileMap::Draw()
 		{
 			switch (m_voLayer[i][j].iRow)
 			{
-			case 0:
+			case 0: // This game only has one real row of tiles, so this is the only one used
 			{
 				switch (m_voLayer[i][j].iCollumn)
 				{
-				case 0: Graphics::DrawSurface(m_glSurfaceDirt, (j * 128) + 64, (i * 128) + 64); break;
-				case 1: Graphics::DrawSurface(m_glSurfaceSand, (j * 128) + 64, (i * 128) + 64); break;
-				case 2: Graphics::DrawSurface(m_glSurfaceGrass, (j * 128) + 64, (i * 128) + 64); break;
+				case 0: Graphics::DrawSurface(m_glSurfaceDirt, (j * 128) + 64, (i * 128) + 64); break;  // Found Dirt
+				case 1: Graphics::DrawSurface(m_glSurfaceSand, (j * 128) + 64, (i * 128) + 64); break;  // Found Sand
+				case 2: Graphics::DrawSurface(m_glSurfaceGrass, (j * 128) + 64, (i * 128) + 64); break; // Found Grass
 
 				default: break;
 				}
@@ -33,8 +39,8 @@ void TileMap::Draw()
 
 TileMap::TileMap(const std::string ac_sTileFile, const std::string ac_sImageFile)
 {
-	FILE *File;
-	fopen_s(&File, ac_sTileFile.c_str(), "r");
+	FILE *File; // The text file for the tile set
+	fopen_s(&File, ac_sTileFile.c_str(), "r"); // Loading the text file for the tile set
 
 	if (File != NULL)
 	{
@@ -63,10 +69,7 @@ TileMap::TileMap(const std::string ac_sTileFile, const std::string ac_sImageFile
 	m_glSurfaceSand = m_glSurfaceEnviorment;
 	m_glSurfaceGrass = m_glSurfaceEnviorment;
 
-	m_glSurfaceDirt.offsetH = 128.0f;
-	m_glSurfaceSand.offsetH = 128.0f;
-	m_glSurfaceGrass.offsetH = 128.0f;
-
+	// Set the offsets for each different tile
 	m_glSurfaceDirt.centerY = 64.0f;
 	m_glSurfaceSand.offsetH = 192.0f;
 	m_glSurfaceGrass.offsetH = 320.0f;

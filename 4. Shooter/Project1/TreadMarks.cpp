@@ -1,3 +1,9 @@
+////////////////////////////////////////////////////////////
+// File: TreadMarks.cpp
+// Author: Ben Odom
+// Date Created: 10/01/2015
+////////////////////////////////////////////////////////////
+
 #include "TreadMarks.h"
 
 
@@ -20,9 +26,9 @@ void TreadMarks::New(const float ac_fPosX, const float ac_fPosY, const float ac_
 
 TreadMarks::TreadMarks(TimerHandle<Tread> &ac_oTreadTimer)
 {
-	m_glSurfaceTread = Graphics::LoadSurface("Images/Tanks/tracksSingle.png");
+	m_glSurfaceTread = Graphics::LoadSurface("Images/Tanks/tracksSingle.png"); // Load the default image for all treads to use
 
-	m_oTreadTimer = &ac_oTreadTimer;
+	m_oTreadTimer = &ac_oTreadTimer; // A reference to the treadtimer in 'MainLoop'
 }
 TreadMarks::~TreadMarks()
 {
@@ -31,8 +37,8 @@ TreadMarks::~TreadMarks()
 
 void TreadMarks::Tread::Update(const int ac_iDeltaTime)
 {
-	m_glSurfaceTread.alpha -= 255.0f/(1500.0f/ac_iDeltaTime);
-	Draw();
+	m_glSurfaceTread.alpha -= 255.0f/(1500.0f/ac_iDeltaTime); // Decreases the alpha relative to 255 by the change in time since the last frame
+	Draw(); 
 }
 void TreadMarks::Tread::Draw()
 {
@@ -41,7 +47,7 @@ void TreadMarks::Tread::Draw()
 
 void TreadMarks::Tread::Delete()
 {	
-	delete this;
+	delete this; // When the timer is 0 for 'this' tread, it needs to be deleted.
 }
 
 TreadMarks::Tread::Tread()

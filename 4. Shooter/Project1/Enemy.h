@@ -1,3 +1,13 @@
+////////////////////////////////////////////////////////////
+// File: Enemy.h
+// Author: Ben Odom
+// Date Created: 10/01/2015
+// Brief: This file contains the code for instances of an
+//		  enemy tank, which inherits all functions and 
+//		  variables from 'Tank.h'. It handles all AI
+//		  responsible for instances of an enemy tank
+////////////////////////////////////////////////////////////
+
 #ifndef _ENEMY_H_
 #define _ENEMY_H_
 
