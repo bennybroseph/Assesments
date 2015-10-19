@@ -1,5 +1,5 @@
 ////////////////////////////////////////////////////////////
-// File: MainLoop.h
+// File: TimerHandle.h
 // Author: Ben Odom
 // Date Created: 10/01/2015
 // Brief: This file contains functionality for creating 
